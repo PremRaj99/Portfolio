@@ -313,7 +313,7 @@ export default function ModernJourneyTimeline() {
             className="absolute md:left-1/2 left-6 md:transform md:-translate-x-1/2 w-px h-full bg-white/20"
             delay={200}
             direction="scale"
-            children={""}
+            children={<></>}
           ></AnimatedDiv>
 
           {/* Timeline Items */}
@@ -382,7 +382,7 @@ export default function ModernJourneyTimeline() {
                           {item.chapter}
                         </h3>
                         <p className="text-gray-400 italic text-sm">
-                          "{item.subtitle}"
+                          &quot;{item.subtitle}&quot;
                         </p>
                       </div>
 
