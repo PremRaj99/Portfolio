@@ -3,22 +3,23 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import Button from "../common/Button";
 import Card from "../common/Card";
+import Image from "next/image";
 
 export default function Contact() {
   return (
     <Card className={"w-full min-h-fit flex flex-col justify-center md:flex-row gap-4 border my-8"}>
       <div className="flex  justify-between md:items-center">
-        <img src={Idea_Mind.src} alt="" className="w-96" />
+        <Image src={Idea_Mind} alt="" className="w-96" />
       </div>
       <div className="">
         <h1 className="text-3xl md:text-3xl font-semibold mt-8 max-w-[30ch]">
-          I don’t just build websites — I craft complete solutions for your
+          I don't just build websites — I craft complete solutions for your
           business.
         </h1>
         <p className="text-gray-400 my-4 max-w-[60ch]">
           Upgrade your online presence with robust, scalable, and user-focused
           web applications. Whether it's boosting performance, enhancing user
-          experience, or increasing conversions — we’ll build a digital solution
+          experience, or increasing conversions — we'll build a digital solution
           tailored to your needs, not just a pretty interface.
         </p>
         <div className="flex gap-2 py-4">

@@ -10,11 +10,12 @@ import {
   Zap,
 } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
 
 // Animation utilities
-const useInView = (options = {}) => {
+const useInView = (options = {}): [React.RefObject<HTMLDivElement | null>, boolean] => {
   const [isInView, setIsInView] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -35,13 +36,22 @@ const useInView = (options = {}) => {
   return [ref, isInView];
 };
 
+import { ReactNode, HTMLAttributes } from "react";
+
+type AnimatedDivProps = {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right" | "scale";
+} & HTMLAttributes<HTMLDivElement>;
+
 const AnimatedDiv = ({
   children,
   className,
   delay = 0,
   direction = "up",
   ...props
-}) => {
+}: AnimatedDivProps) => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -87,7 +97,15 @@ const AnimatedDiv = ({
   );
 };
 
-const FloatingParticle = ({ delay, size, duration, x, y }) => {
+type FloatingParticleProps = {
+  delay: number;
+  size: number;
+  duration: number;
+  x: number;
+  y: number;
+};
+
+const FloatingParticle = ({ delay, size, duration, x, y }: FloatingParticleProps) => {
   return (
     <div
       className="absolute rounded-full bg-white/5 animate-pulse"
@@ -103,7 +121,13 @@ const FloatingParticle = ({ delay, size, duration, x, y }) => {
   );
 };
 
-const SkillBadge = ({ skill, index, isVisible }) => {
+type SkillBadgeProps = {
+  skill: string;
+  index: number;
+  isVisible: boolean;
+};
+
+const SkillBadge = ({ skill, index, isVisible }: SkillBadgeProps) => {
   return (
     <span
       className="px-3 py-1 text-xs bg-white/5 backdrop-blur-sm border border-white/10 rounded-full text-gray-300 hover:bg-white/10 transition-all duration-300 hover:scale-105 cursor-pointer"
@@ -119,11 +143,11 @@ const SkillBadge = ({ skill, index, isVisible }) => {
 };
 
 export default function ModernJourneyTimeline() {
-  const [activeChapter, setActiveChapter] = useState(0);
+  const [activeChapter, setActiveChapter] = useState<number | null>(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -281,8 +305,10 @@ export default function ModernJourneyTimeline() {
           <AnimatedDiv
             className="absolute md:left-1/2 left-6 md:transform md:-translate-x-1/2 w-px h-full bg-white/20"
             delay={200}
-            direction="scale"
-          />
+            direction="scale" children={undefined}          >
+            {/* Timeline Line - visually rendered by styling */}
+            {/* Empty children to satisfy required prop */}
+          </AnimatedDiv>
 
           {/* Timeline Items */}
           <div className="space-y-8 sm:space-y-12">
@@ -344,7 +370,7 @@ export default function ModernJourneyTimeline() {
                           </span>
                         </div>
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-1 flex items-center gap-1">
-                            <img src={Show_Feast.src} className="w-8 h-8" alt="" />
+                            <Image src={Show_Feast} className="w-8 h-8" alt="" />
                           {item.chapter}
                         </h3>
                         <p className="text-gray-400 italic text-sm">

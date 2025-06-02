@@ -12,9 +12,11 @@ import {
 import { useEffect, useRef, useState } from "react";
 
 // Animation utilities
-const useInView = (options = {}) => {
+import type { RefObject } from "react";
+
+const useInView = (options = {}): [RefObject<HTMLDivElement | null>, boolean] => {
   const [isInView, setIsInView] = useState(false);
-  const ref = useRef();
+  const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
@@ -35,13 +37,22 @@ const useInView = (options = {}) => {
   return [ref, isInView];
 };
 
+import { ReactNode, HTMLAttributes } from "react";
+
+type AnimatedDivProps = {
+  children: ReactNode;
+  className?: string;
+  delay?: number;
+  direction?: "up" | "down" | "left" | "right" | "scale";
+} & HTMLAttributes<HTMLDivElement>;
+
 const AnimatedDiv = ({
   children,
   className,
   delay = 0,
   direction = "up",
   ...props
-}) => {
+}: AnimatedDivProps) => {
   const [ref, isInView] = useInView({ threshold: 0.1 });
   const [hasAnimated, setHasAnimated] = useState(false);
 
@@ -85,7 +96,15 @@ const AnimatedDiv = ({
   );
 };
 
-const FloatingParticle = ({ delay, size, duration, x, y }) => {
+type FloatingParticleProps = {
+  delay: number;
+  size: number;
+  duration: number;
+  x: number;
+  y: number;
+};
+
+const FloatingParticle = ({ delay, size, duration, x, y }: FloatingParticleProps) => {
   return (
     <div
       className="absolute rounded-full bg-white/5 animate-pulse"
@@ -101,10 +120,16 @@ const FloatingParticle = ({ delay, size, duration, x, y }) => {
   );
 };
 
-const SkillCard = ({ skill, index, mousePosition }) => {
+type SkillCardProps = {
+  skill: { name: string; level: string; category: string };
+  index: number;
+  mousePosition: { x: number; y: number };
+};
+
+const SkillCard = ({ skill, index }: SkillCardProps) => {
   const [isHovered, setIsHovered] = useState(false);
 
-  const getLevelColor = (level) => {
+  const getLevelColor = (level: string) => {
     switch (level) {
       case "Advanced":
         return "from-emerald-500 to-teal-500";
@@ -117,7 +142,7 @@ const SkillCard = ({ skill, index, mousePosition }) => {
     }
   };
 
-  const getLevelWidth = (level) => {
+  const getLevelWidth = (level: string) => {
     switch (level) {
       case "Advanced":
         return "90%";
@@ -130,7 +155,7 @@ const SkillCard = ({ skill, index, mousePosition }) => {
     }
   };
 
-  const getIcon = (skillName) => {
+  const getIcon = (skillName: string) => {
     const name = skillName.toLowerCase();
     if (name.includes("react") || name.includes("next")) return Code;
     if (name.includes("mongo") || name.includes("database")) return Database;
@@ -237,7 +262,7 @@ export default function ModernSkills() {
   const [activeCategory, setActiveCategory] = useState("all");
 
   useEffect(() => {
-    const handleMouseMove = (e) => {
+    const handleMouseMove = (e: MouseEvent) => {
       setMousePosition({ x: e.clientX, y: e.clientY });
     };
 
@@ -269,10 +294,6 @@ export default function ModernSkills() {
     activeCategory === "all"
       ? skills
       : skills.filter((skill) => skill.category === activeCategory);
-
-  const getSkillCount = (level) => {
-    return skills.filter((skill) => skill.level === level).length;
-  };
 
   return (
     <div className="bg-black text-white py-8 px-4 sm:px-8 relative overflow-hidden min-h-screen">

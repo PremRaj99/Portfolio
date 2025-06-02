@@ -4,6 +4,7 @@ import Button from "../common/Button";
 import Card from "../common/Card";
 import Show_Yo from "@/public/images/Show_Yo.png";
 import Say_Hi from "@/public/images/Say_Hii.png";
+import Image from "next/image";
 
 export default function Hero() {
   return (
@@ -47,8 +48,8 @@ export default function Hero() {
         </p>
       </Card>
       <Card className="col-span-12 md:col-span-4">
-        <img
-          src={Say_Hi.src}
+        <Image
+          src={Say_Hi}
           alt="Hero Image"
           className="w-full h-full object-cover rounded-lg"
           loading="lazy"

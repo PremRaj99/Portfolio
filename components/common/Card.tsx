@@ -4,7 +4,7 @@ export default function Card({
   className,
   children,
 }: {
-  className: String | undefined;
+  className: string | undefined;
   children: React.ReactNode;
 }) {
   return (
