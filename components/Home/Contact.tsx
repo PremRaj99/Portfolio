@@ -1,9 +1,8 @@
-import { FiGithub } from "react-icons/fi";
-import Card from "../common/Card";
-import Show_Yo from "@/public/images/Show_Yo.png";
-import { FaLinkedinIn } from "react-icons/fa";
-import Button from "../common/Button";
 import Idea_Mind from "@/public/images/Idea_Mind.png";
+import { FaLinkedinIn } from "react-icons/fa";
+import { FiGithub } from "react-icons/fi";
+import Button from "../common/Button";
+import Card from "../common/Card";
 
 export default function Contact() {
   return (

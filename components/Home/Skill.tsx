@@ -1,15 +1,15 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
 import {
   Code,
   Database,
   Globe,
-  Server,
   Layers,
+  Server,
   Sparkles,
   Star,
   Zap,
 } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 // Animation utilities
 const useInView = (options = {}) => {

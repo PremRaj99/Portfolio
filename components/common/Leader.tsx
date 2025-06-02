@@ -1,16 +1,15 @@
 "use client";
-import React, { useState, useEffect, useRef } from "react";
-import Show_You from '@/public/images/Show_Yo.png';
+import Show_Feast from '@/public/images/Show_Feast.png';
 import {
-  Code,
   Cloud,
-  Zap,
-  Users,
-  Target,
+  Code,
   Rocket,
   Sparkles,
+  Target,
+  Users,
+  Zap,
 } from "lucide-react";
-import Show_Feast from '@/public/images/Show_Feast.png';
+import { useEffect, useRef, useState } from "react";
 
 // Animation utilities
 const useInView = (options = {}) => {
