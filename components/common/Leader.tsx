@@ -314,6 +314,7 @@ export default function ModernJourneyTimeline() {
             delay={200}
             direction="scale"
           >
+            <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-4 bg-white/20 rounded-full shadow-lg" />
           </AnimatedDiv>
 
           {/* Timeline Items */}
