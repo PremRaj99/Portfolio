@@ -32,8 +32,6 @@ export const metadata: Metadata = {
   },
 };
 
-console.log(`%cWelcome to Prem Raj's Portfolio!`);
-
 export default function RootLayout({
   children,
 }: Readonly<{

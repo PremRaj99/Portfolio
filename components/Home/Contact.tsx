@@ -13,13 +13,13 @@ export default function Contact() {
       </div>
       <div className="">
         <h1 className="text-3xl md:text-3xl font-semibold mt-8 max-w-[30ch]">
-          I don't just build websites — I craft complete solutions for your
+          I don&apos;t just build websites — I craft complete solutions for your
           business.
         </h1>
         <p className="text-gray-400 my-4 max-w-[60ch]">
           Upgrade your online presence with robust, scalable, and user-focused
-          web applications. Whether it's boosting performance, enhancing user
-          experience, or increasing conversions — we'll build a digital solution
+          web applications. Whether it&apos;s boosting performance, enhancing user
+          experience, or increasing conversions — we&apos;ll build a digital solution
           tailored to your needs, not just a pretty interface.
         </p>
         <div className="flex gap-2 py-4">

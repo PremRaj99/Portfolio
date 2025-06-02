@@ -1,5 +1,5 @@
 "use client";
-import Show_Feast from '@/public/images/Show_Feast.png';
+import Show_Feast from "@/public/images/Show_Feast.png";
 import {
   Cloud,
   Code,
@@ -13,7 +13,9 @@ import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 
 // Animation utilities
-const useInView = (options = {}): [React.RefObject<HTMLDivElement | null>, boolean] => {
+const useInView = (
+  options = {}
+): [React.RefObject<HTMLDivElement | null>, boolean] => {
   const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -22,13 +24,14 @@ const useInView = (options = {}): [React.RefObject<HTMLDivElement | null>, boole
       setIsInView(entry.isIntersecting);
     }, options);
 
-    if (ref.current) {
-      observer.observe(ref.current);
+    const currentRef = ref.current;
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
     return () => {
-      if (ref.current) {
-        observer.unobserve(ref.current);
+      if (currentRef) {
+        observer.unobserve(currentRef);
       }
     };
   }, [options]);
@@ -105,7 +108,13 @@ type FloatingParticleProps = {
   y: number;
 };
 
-const FloatingParticle = ({ delay, size, duration, x, y }: FloatingParticleProps) => {
+const FloatingParticle = ({
+  delay,
+  size,
+  duration,
+  x,
+  y,
+}: FloatingParticleProps) => {
   return (
     <div
       className="absolute rounded-full bg-white/5 animate-pulse"
@@ -156,113 +165,112 @@ export default function ModernJourneyTimeline() {
   }, []);
 
   const journeyData = [
-  {
-    id: 1,
-    chapter: "The Spark",
-    subtitle: "It all started with curiosity.",
-    icon: Sparkles,
-    year: "Early B.Tech",
-    description:
-      "I discovered web development in my early B.Tech days. A basic HTML page turned into a passion for building.",
-    skills: ["HTML", "CSS", "JavaScript Basics"],
-  },
-  {
-    id: 2,
-    chapter: "The Builder's Path",
-    subtitle: "From static pages to dynamic dreams.",
-    icon: Code,
-    year: "Mid B.Tech",
-    description:
-      "I learned React, Node, and Express to build full-stack apps and real-world projects.",
-    skills: ["React.js", "Node.js", "Express.js", "MongoDB", "RESTful APIs"],
-    projects: [
-      "Cyber Hunter Team Management",
-      "Emerginet Road Emergency Service",
-    ],
-  },
-  {
-    id: 3,
-    chapter: "Adding Motion to the Web",
-    subtitle: "Make it move. Make it memorable.",
-    icon: Zap,
-    year: "Advanced Learning",
-    description:
-      "I explored GSAP and Framer Motion to add smooth, interactive animations.",
-    skills: ["GSAP", "Framer Motion", "Advanced CSS", "UI/UX Design"],
-  },
-  {
-    id: 4,
-    chapter: "Into the Cloud",
-    subtitle: "From localhost to global host.",
-    icon: Cloud,
-    year: "Cloud Journey",
-    description:
-      "I deployed projects using AWS services and learned cloud infrastructure basics.",
-    skills: [
-      "AWS EC2",
-      "S3",
-      "VPC",
-      "Elastic IP",
-      "Route 53",
-      "Cloud Architecture",
-    ],
-  },
-  {
-    id: 5,
-    chapter: "Connected World",
-    subtitle: "No app is an island.",
-    icon: Users,
-    year: "Integration Phase",
-    description:
-      "I integrated APIs for maps, auth, and payments to enhance usability.",
-    skills: [
-      "API Integration",
-      "OAuth",
-      "Payment Gateways",
-      "Firebase",
-      "Third-party Services",
-    ],
-    integrations: [
-      "OLAMAP",
-      "Google Maps",
-      "Razorpay",
-      "Cashfree",
-      "PhonePe",
-      "UPI Tranzact",
-    ],
-  },
-  {
-    id: 6,
-    chapter: "Freelance Fire",
-    subtitle: "Real clients. Real problems. Real impact.",
-    icon: Rocket,
-    year: "Professional Work",
-    description:
-      "As a freelancer, I built solutions for clients and delivered projects on time.",
-    skills: [
-      "Client Management",
-      "Project Delivery",
-      "Quality Assurance",
-      "Deadline Management",
-    ],
-  },
-  {
-    id: 7,
-    chapter: "The Next Mission",
-    subtitle: "Looking for a team to grow with.",
-    icon: Target,
-    year: "Future Goals",
-    description:
-      "I’m now looking for an internship or job to grow with a team and build impactful products.",
-    skills: [
-      "Full-stack Development",
-      "Team Collaboration",
-      "Continuous Learning",
-      "Innovation",
-    ],
-  },
-];
-
+    {
+      id: 1,
+      chapter: "The Spark",
+      subtitle: "It all started with curiosity.",
+      icon: Sparkles,
+      year: "Early B.Tech",
+      description:
+        "I discovered web development in my early B.Tech days. A basic HTML page turned into a passion for building.",
+      skills: ["HTML", "CSS", "JavaScript Basics"],
+    },
+    {
+      id: 2,
+      chapter: "The Builder's Path",
+      subtitle: "From static pages to dynamic dreams.",
+      icon: Code,
+      year: "Mid B.Tech",
+      description:
+        "I learned React, Node, and Express to build full-stack apps and real-world projects.",
+      skills: ["React.js", "Node.js", "Express.js", "MongoDB", "RESTful APIs"],
+      projects: [
+        "Cyber Hunter Team Management",
+        "Emerginet Road Emergency Service",
+      ],
+    },
+    {
+      id: 3,
+      chapter: "Adding Motion to the Web",
+      subtitle: "Make it move. Make it memorable.",
+      icon: Zap,
+      year: "Advanced Learning",
+      description:
+        "I explored GSAP and Framer Motion to add smooth, interactive animations.",
+      skills: ["GSAP", "Framer Motion", "Advanced CSS", "UI/UX Design"],
+    },
+    {
+      id: 4,
+      chapter: "Into the Cloud",
+      subtitle: "From localhost to global host.",
+      icon: Cloud,
+      year: "Cloud Journey",
+      description:
+        "I deployed projects using AWS services and learned cloud infrastructure basics.",
+      skills: [
+        "AWS EC2",
+        "S3",
+        "VPC",
+        "Elastic IP",
+        "Route 53",
+        "Cloud Architecture",
+      ],
+    },
+    {
+      id: 5,
+      chapter: "Connected World",
+      subtitle: "No app is an island.",
+      icon: Users,
+      year: "Integration Phase",
+      description:
+        "I integrated APIs for maps, auth, and payments to enhance usability.",
+      skills: [
+        "API Integration",
+        "OAuth",
+        "Payment Gateways",
+        "Firebase",
+        "Third-party Services",
+      ],
+      integrations: [
+        "OLAMAP",
+        "Google Maps",
+        "Razorpay",
+        "Cashfree",
+        "PhonePe",
+        "UPI Tranzact",
+      ],
+    },
+    {
+      id: 6,
+      chapter: "Freelance Fire",
+      subtitle: "Real clients. Real problems. Real impact.",
+      icon: Rocket,
+      year: "Professional Work",
+      description:
+        "As a freelancer, I built solutions for clients and delivered projects on time.",
+      skills: [
+        "Client Management",
+        "Project Delivery",
+        "Quality Assurance",
+        "Deadline Management",
+      ],
+    },
+    {
+      id: 7,
+      chapter: "The Next Mission",
+      subtitle: "Looking for a team to grow with.",
+      icon: Target,
+      year: "Future Goals",
+      description:
+        "I’m now looking for an internship or job to grow with a team and build impactful products.",
+      skills: [
+        "Full-stack Development",
+        "Team Collaboration",
+        "Continuous Learning",
+        "Innovation",
+      ],
+    },
+  ];
 
   return (
     <div className="bg-black text-white py-16 px-4 sm:px-8 relative overflow-hidden">
@@ -301,14 +309,12 @@ export default function ModernJourneyTimeline() {
 
         {/* Timeline Container */}
         <div className="relative">
-          {/* Timeline Line - Center on desktop, Left on mobile */}
           <AnimatedDiv
             className="absolute md:left-1/2 left-6 md:transform md:-translate-x-1/2 w-px h-full bg-white/20"
             delay={200}
-            direction="scale" children={undefined}          >
-            {/* Timeline Line - visually rendered by styling */}
-            {/* Empty children to satisfy required prop */}
-          </AnimatedDiv>
+            direction="scale"
+            children={""}
+          ></AnimatedDiv>
 
           {/* Timeline Items */}
           <div className="space-y-8 sm:space-y-12">
@@ -349,12 +355,14 @@ export default function ModernJourneyTimeline() {
                   </AnimatedDiv>
 
                   {/* Content Card */}
-                  <div className={`
+                  <div
+                    className={`
                     w-full
                     md:w-5/12
                     pl-16 md:pl-0
                     ${isLeft ? "md:pr-12" : "md:pl-12 md:ml-auto"}
-                  `}>
+                  `}
+                  >
                     <div
                       className={`bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-4 sm:p-6 shadow-lg transform transition-all duration-500 hover:scale-105 hover:bg-white/15 cursor-pointer ${
                         activeChapter === index ? "scale-105 bg-white/15" : ""
@@ -370,7 +378,7 @@ export default function ModernJourneyTimeline() {
                           </span>
                         </div>
                         <h3 className="text-lg sm:text-xl font-bold text-white mb-1 flex items-center gap-1">
-                            <Image src={Show_Feast} className="w-8 h-8" alt="" />
+                          <Image src={Show_Feast} className="w-8 h-8" alt="" />
                           {item.chapter}
                         </h3>
                         <p className="text-gray-400 italic text-sm">

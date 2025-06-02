@@ -12,15 +12,15 @@ export default function Hero() {
       <Card className={"w-full min-h-fit border col-span-12 md:col-span-8"}>
         <div className=" flex flex-col md:flex-row gap-4 justify-between md:items-center">
           <div className="flex gap-2">
-            <img
-              src={Show_Yo.src}
+            <Image
+              src={Show_Yo}
               alt="Prem Raj"
               className="w-10 h-10 rounded-full object-cover"
               loading="lazy"
             />
 
             <div className="flex flex-col">
-              <h1 className="">Hello, I'm Prem Raj</h1>
+              <h1 className="">Hello, I&apos;m Prem Raj</h1>
               <span className="text-xs text-gray-400">
                 Full Stack Developer
               </span>
