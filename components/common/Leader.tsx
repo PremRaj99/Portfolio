@@ -313,8 +313,8 @@ export default function ModernJourneyTimeline() {
             className="absolute md:left-1/2 left-6 md:transform md:-translate-x-1/2 w-px h-full bg-white/20"
             delay={200}
             direction="scale"
-            children={<></>}
-          ></AnimatedDiv>
+          >
+          </AnimatedDiv>
 
           {/* Timeline Items */}
           <div className="space-y-8 sm:space-y-12">
