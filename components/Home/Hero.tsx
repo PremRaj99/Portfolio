@@ -27,14 +27,31 @@ export default function Hero() {
             </div>
           </div>
           <div className="flex gap-2">
-            <div className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+            <div
+              onClick={() => {
+                window.open("https://github.com/PremRaj99");
+              }}
+              className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+            >
               <FiGithub className="text-xl text-white" />
             </div>
-            <div className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+            <div
+              onClick={() => {
+                window.open("www.linkedin.com/in/prem-raj99");
+              }}
+              className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+            >
               <FaLinkedinIn className="text-xl text-white" />
             </div>
 
-            <Button> Contact me </Button>
+            <Button
+              onClick={() => {
+                window.location.href = "https://wa.me/916200103129";
+              }}
+            >
+              {" "}
+              Contact me{" "}
+            </Button>
           </div>
         </div>
         <h1 className="text-3xl md:text-4xl font-semibold mt-8">

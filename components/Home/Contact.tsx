@@ -7,7 +7,11 @@ import Image from "next/image";
 
 export default function Contact() {
   return (
-    <Card className={"w-full min-h-fit flex flex-col justify-center md:flex-row gap-4 border my-8"}>
+    <Card
+      className={
+        "w-full min-h-fit flex flex-col justify-center md:flex-row gap-4 border my-8"
+      }
+    >
       <div className="flex  justify-between md:items-center">
         <Image src={Idea_Mind} alt="" className="w-96" />
       </div>
@@ -18,19 +22,36 @@ export default function Contact() {
         </h1>
         <p className="text-gray-400 my-4 max-w-[60ch]">
           Upgrade your online presence with robust, scalable, and user-focused
-          web applications. Whether it&apos;s boosting performance, enhancing user
-          experience, or increasing conversions — we&apos;ll build a digital solution
-          tailored to your needs, not just a pretty interface.
+          web applications. Whether it&apos;s boosting performance, enhancing
+          user experience, or increasing conversions — we&apos;ll build a
+          digital solution tailored to your needs, not just a pretty interface.
         </p>
         <div className="flex gap-2 py-4">
-          <div className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+          <div
+            onClick={() => {
+              window.open("https://github.com/PremRaj99");
+            }}
+            className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+          >
             <FiGithub className="text-xl text-white" />
           </div>
-          <div className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer">
+          <div
+            onClick={() => {
+              window.open("www.linkedin.com/in/prem-raj99");
+            }}
+            className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer"
+          >
             <FaLinkedinIn className="text-xl text-white" />
           </div>
 
-          <Button> Contact me </Button>
+          <Button
+            onClick={() => {
+              window.open("https://wa.me/916200103129");
+            }}
+          >
+            {" "}
+            Contact me{" "}
+          </Button>
         </div>
       </div>
     </Card>
