@@ -1,3 +1,5 @@
+"use client";
+
 import Idea_Mind from "@/public/images/Idea_Mind.png";
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
@@ -37,7 +39,7 @@ export default function Contact() {
           </div>
           <div
             onClick={() => {
-              window.open("www.linkedin.com/in/prem-raj99");
+              window.open("https://www.linkedin.com/in/prem-raj99");
             }}
             className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer"
           >
