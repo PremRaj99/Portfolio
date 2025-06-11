@@ -1,9 +1,11 @@
+"use client";
+
 import { FaLinkedinIn } from "react-icons/fa";
 import { FiGithub } from "react-icons/fi";
 import Button from "../common/Button";
 import Card from "../common/Card";
 import Show_Yo from "@/public/images/Show_Yo.png";
-import Say_Hi from "@/public/images/Say_Hii.png";
+import Say_Hi from "@/public/images/Say_Hi.png";
 import Image from "next/image";
 
 export default function Hero() {
@@ -37,7 +39,7 @@ export default function Hero() {
             </div>
             <div
               onClick={() => {
-                window.open("www.linkedin.com/in/prem-raj99");
+                window.open("https://www.linkedin.com/in/prem-raj99");
               }}
               className="w-10 h-10 flex items-center justify-center border border-white/10 rounded-xl hover:bg-white/5 transition-colors duration-300 cursor-pointer"
             >
