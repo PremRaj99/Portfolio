@@ -5,7 +5,7 @@ import { FiGithub } from "react-icons/fi";
 import Button from "../common/Button";
 import Card from "../common/Card";
 import Show_Yo from "@/public/images/Show_Yo.png";
-import Say_Hi from "@/public/images/Say_Hi.png";
+import Say_Hi from "@/public/images/Say_Hii.png";
 import Image from "next/image";
 
 export default function Hero() {
