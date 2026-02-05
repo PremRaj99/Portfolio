@@ -1,20 +1,13 @@
 "use client";
-import {
-  Code,
-  Database,
-  Globe,
-  Layers,
-  Server,
-  Sparkles,
-  Star,
-  Zap,
-} from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import type { RefObject, HTMLAttributes, ReactNode } from "react";
+// Ensure this path matches your project
+import FrontendIllustration from "../illustration/responsive";
 
-// Animation utilities
-import type { RefObject } from "react";
-
-const useInView = (options = {}): [RefObject<HTMLDivElement | null>, boolean] => {
+// --- Animation Hook ---
+const useInView = (
+  options = {},
+): [RefObject<HTMLDivElement | null>, boolean] => {
   const [isInView, setIsInView] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
 
@@ -39,8 +32,7 @@ const useInView = (options = {}): [RefObject<HTMLDivElement | null>, boolean] =>
   return [ref, isInView];
 };
 
-import { ReactNode, HTMLAttributes } from "react";
-
+// --- Animated Wrapper ---
 type AnimatedDivProps = {
   children: ReactNode;
   className?: string;
@@ -98,6 +90,7 @@ const AnimatedDiv = ({
   );
 };
 
+// --- Background Particles ---
 type FloatingParticleProps = {
   delay: number;
   size: number;
@@ -106,7 +99,13 @@ type FloatingParticleProps = {
   y: number;
 };
 
-const FloatingParticle = ({ delay, size, duration, x, y }: FloatingParticleProps) => {
+const FloatingParticle = ({
+  delay,
+  size,
+  duration,
+  x,
+  y,
+}: FloatingParticleProps) => {
   return (
     <div
       className="absolute rounded-full bg-white/5 animate-pulse"
@@ -122,181 +121,53 @@ const FloatingParticle = ({ delay, size, duration, x, y }: FloatingParticleProps
   );
 };
 
-type SkillCardProps = {
-  skill: { name: string; level: string; category: string };
-  index: number;
-  mousePosition: { x: number; y: number };
+// --- Data ---
+type Role = {
+  title: string;
+  description: string;
+  stack: string;
+  screen: ReactNode;
 };
 
-const SkillCard = ({ skill, index }: SkillCardProps) => {
-  const [isHovered, setIsHovered] = useState(false);
-
-  const getLevelColor = (level: string) => {
-    switch (level) {
-      case "Advanced":
-        return "from-emerald-500 to-teal-500";
-      case "Intermediate":
-        return "from-blue-500 to-cyan-500";
-      case "Beginner":
-        return "from-orange-500 to-yellow-500";
-      default:
-        return "from-gray-500 to-gray-600";
-    }
-  };
-
-  const getLevelWidth = (level: string) => {
-    switch (level) {
-      case "Advanced":
-        return "90%";
-      case "Intermediate":
-        return "70%";
-      case "Beginner":
-        return "40%";
-      default:
-        return "50%";
-    }
-  };
-
-  const getIcon = (skillName: string) => {
-    const name = skillName.toLowerCase();
-    if (name.includes("react") || name.includes("next")) return Code;
-    if (name.includes("mongo") || name.includes("database")) return Database;
-    if (name.includes("html") || name.includes("css")) return Globe;
-    if (name.includes("node") || name.includes("express")) return Server;
-    if (name.includes("javascript")) return Zap;
-    return Layers;
-  };
-
-  const IconComponent = getIcon(skill.name);
-
-  return (
-    <AnimatedDiv
-      className="group relative"
-      delay={index * 100}
-      direction={index % 2 === 0 ? "left" : "right"}
-    >
-      <div
-        className={`bg-white/10 backdrop-blur-sm border border-white/10 rounded-xl p-6 shadow-lg transform transition-all duration-500 hover:scale-105 hover:bg-white/15 cursor-pointer relative overflow-hidden ${
-          isHovered ? "scale-105 bg-white/15" : ""
-        }`}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        {/* Glow effect on hover */}
-        <div
-          className={`absolute inset-0 bg-gradient-to-r ${getLevelColor(
-            skill.level
-          )} opacity-0 group-hover:opacity-10 transition-opacity duration-500 rounded-xl`}
-        />
-
-        {/* Skill Header */}
-        <div className="flex items-center justify-between mb-4">
-          <div className="flex items-center gap-3">
-            <div
-              className={`p-2 rounded-lg bg-gradient-to-r ${getLevelColor(
-                skill.level
-              )} bg-opacity-20`}
-            >
-              <IconComponent className="w-5 h-5 text-white" />
-            </div>
-            <h3 className="text-lg font-bold text-white">{skill.name}</h3>
-          </div>
-          <span
-            className={`px-3 py-1 text-xs font-medium rounded-full bg-gradient-to-r ${getLevelColor(
-              skill.level
-            )} text-white shadow-lg`}
-          >
-            {skill.level}
-          </span>
-        </div>
-
-        {/* Progress Bar */}
-        <div className="relative">
-          <div className="w-full bg-white/10 rounded-full h-2 mb-2">
-            <div
-              className={`h-full bg-gradient-to-r ${getLevelColor(
-                skill.level
-              )} rounded-full transition-all duration-1000 ease-out shadow-lg`}
-              style={{
-                width: isHovered ? getLevelWidth(skill.level) : "0%",
-              }}
-            />
-          </div>
-          <div className="flex justify-between text-xs text-gray-400">
-            <span>Proficiency</span>
-            <span>{skill.level}</span>
-          </div>
-        </div>
-
-        {/* Floating particles inside card on hover */}
-        {isHovered && (
-          <>
-            <FloatingParticle
-              delay={0}
-              size={3}
-              duration={2000}
-              x={20}
-              y={20}
-            />
-            <FloatingParticle
-              delay={500}
-              size={2}
-              duration={1500}
-              x={80}
-              y={30}
-            />
-            <FloatingParticle
-              delay={1000}
-              size={4}
-              duration={2500}
-              x={60}
-              y={70}
-            />
-          </>
-        )}
-      </div>
-    </AnimatedDiv>
-  );
-};
+const roles: Role[] = [
+  {
+    title: "Frontend Engineering",
+    description:
+      "Building pixel-perfect, interactive web apps that look great on any device.",
+    stack: "React, Next.js, Tailwind, Motion",
+    screen: <FrontendIllustration />,
+  },
+  {
+    title: "Backend Architecture",
+    description:
+      "Creating the secure logic and fast APIs that power your application behind the scenes.",
+    stack: "Node.js, Postgres, Auth, Security",
+    screen: <></>,
+  },
+  {
+    title: "Data & Performance",
+    description:
+      "Structuring data so it loads instantly and scales as you grow.",
+    stack: "SQL, NoSQL, Redis, Caching",
+    screen: <></>,
+  },
+  {
+    title: "Cloud & DevOps",
+    description:
+      "Ensuring your website stays online, secure, and runs smoothly 24/7.",
+    stack: "AWS, Vercel, Docker, CI/CD",
+    screen: <></>,
+  },
+  {
+    title: "Integrations",
+    description:
+      "Seamlessly connecting payments, analytics, and external tools to your business.",
+    stack: "Stripe, PayPal, Google Analytics",
+    screen: <></>,
+  },
+];
 
 export default function ModernSkills() {
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
-  const [activeCategory, setActiveCategory] = useState("all");
-
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      setMousePosition({ x: e.clientX, y: e.clientY });
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, []);
-
-  const skills = [
-    { name: "JavaScript", level: "Advanced", category: "frontend" },
-    { name: "React", level: "Advanced", category: "frontend" },
-    { name: "Next.js", level: "Intermediate", category: "frontend" },
-    { name: "Node.js", level: "Intermediate", category: "backend" },
-    { name: "Express.js", level: "Intermediate", category: "backend" },
-    { name: "MongoDB", level: "Intermediate", category: "database" },
-    { name: "HTML", level: "Advanced", category: "frontend" },
-    { name: "CSS", level: "Advanced", category: "frontend" },
-  ];
-
-  const categories = [
-    { id: "all", name: "All Skills", icon: Sparkles },
-    { id: "frontend", name: "Frontend", icon: Globe },
-    { id: "backend", name: "Backend", icon: Server },
-    { id: "database", name: "Database", icon: Database },
-    { id: "design", name: "Design", icon: Star },
-    { id: "cloud", name: "Cloud", icon: Layers },
-  ];
-
-  const filteredSkills =
-    activeCategory === "all"
-      ? skills
-      : skills.filter((skill) => skill.category === activeCategory);
-
   return (
     <div className="bg-black text-white py-8 px-4 sm:px-8 relative overflow-hidden min-h-screen">
       {/* Floating Particles */}
@@ -311,17 +182,7 @@ export default function ModernSkills() {
         />
       ))}
 
-      {/* Mouse Follower */}
-      <div
-        className="fixed w-4 h-4 bg-white/20 rounded-full pointer-events-none z-50 transition-all duration-300 ease-out hidden md:block"
-        style={{
-          left: mousePosition.x - 8,
-          top: mousePosition.y - 8,
-          transform: `scale(${activeCategory !== "all" ? 1.5 : 1})`,
-        }}
-      />
-
-      <div className="max-w-6xl mx-auto relative z-10">
+      <div className="max-w-5xl mx-auto relative z-10">
         {/* Header */}
         <AnimatedDiv className="text-center mb-12" delay={0} direction="up">
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
@@ -332,40 +193,36 @@ export default function ModernSkills() {
           </p>
         </AnimatedDiv>
 
-        {/* Category Filter */}
-        <AnimatedDiv
-          className="flex flex-wrap justify-center gap-3 mb-12"
-          delay={200}
-          direction="up"
-        >
-          {categories.map((category) => {
-            const IconComponent = category.icon;
-            return (
-              <button
-                key={category.id}
-                onClick={() => setActiveCategory(category.id)}
-                className={`flex items-center gap-2 px-4 py-2 rounded-lg font-medium transition-all duration-300 transform hover:scale-105 ${
-                  activeCategory === category.id
-                    ? "bg-white text-black shadow-lg"
-                    : "bg-white/10 text-white border border-white/10 hover:bg-white/20"
-                }`}
-              >
-                <IconComponent className="w-4 h-4" />
-                {category.name}
-              </button>
-            );
-          })}
-        </AnimatedDiv>
+        <div className="w-full grid md:grid-cols-2 gap-8 overflow-hidden">
+          {roles.map((role: Role, index) => (
+            <AnimatedDiv
+              key={index}
+              className="flex flex-col gap-4 container p-4 bg-white/5 rounded-3xl border border-white/10 overflow-hidden"
+              delay={index * 50}
+            >
+              <div className="flex flex-col gap-2 overflow-hidden">
+                <div className="min-h-60 h-[60%] w-[55%] min-w-60 sm:h-65 sm:w-65 md:h-72 md:w-120 relative">
+                  <div className="absolute inset-y-0 left-0 w-[170%] md:w-full transition-all duration-500">
+                    {role.screen}
+                  </div>
+                </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {filteredSkills.map((skill, index) => (
-            <SkillCard
-              key={skill.name}
-              skill={skill}
-              index={index}
-              mousePosition={mousePosition}
-            />
+                <h2 className="text-2xl font-bold mt-2">{role.title}</h2>
+                <p className="text-gray-500 text-sm mb-2">{role.description}</p>
+                
+                {/* Tech Stack Pills */}
+                <div className="flex flex-wrap gap-2 item-center">
+                  {role.stack.split(",").map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-white/5 border border-white/10 text-gray-300 px-2 py-1 rounded-md text-[10px] uppercase tracking-wider font-medium"
+                    >
+                      {tech.trim()}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </AnimatedDiv>
           ))}
         </div>
       </div>

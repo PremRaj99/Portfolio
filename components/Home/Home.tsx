@@ -8,7 +8,7 @@ import Image from "next/image";
 
 export default function Home() {
   return (
-    <div className="overflow-hidden container w-screen">
+    <div className="overflow-hidden container max-w-6xl mx-auto">
       <div className="flex items-center my-4">
         <Image
           src={Show_Feast}
