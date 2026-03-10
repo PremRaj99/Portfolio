@@ -1,6 +1,5 @@
 // import BackendArchitecture from '@/components/illustration/backend-architecture';
 import BackendArchitecture from '@/components/illustration/backend-architecture';
-import FrontendEngineeringIllustration from '@/components/illustration/responsive';
 
 export default function page() {
   return (
