@@ -3,6 +3,7 @@
 import { cn } from '@/utils/cn';
 import { Laptop, Smartphone, UserIcon } from 'lucide-react';
 import { motion } from 'motion/react';
+import { easeInOut } from 'motion';
 import React, { useEffect, useRef, useState } from 'react';
 import {
   ApiGatewayLogo,
@@ -18,7 +19,6 @@ import {
 
 // --- Global Config ---
 const BASE_WIDTH = 1200; // The "natural" width of the architecture
-const customEase = [0.16, 1, 0.3, 1];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -34,12 +34,20 @@ const itemVariants = {
     opacity: 1,
     y: 0,
     filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: customEase },
+    transition: { duration: 0.8, ease: easeInOut },
   },
 };
 
 // --- Helper Components ---
-const ArchNode = ({ title, children, className }: { title?: string; children: React.ReactNode; className?: string }) => (
+const ArchNode = ({
+  title,
+  children,
+  className,
+}: {
+  title?: string;
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <motion.div
     whileHover={{ y: -2, boxShadow: '0 12px 24px -10px rgba(0,0,0,0.15)' }}
     className={cn(
@@ -57,7 +65,15 @@ const ArchNode = ({ title, children, className }: { title?: string; children: Re
   </motion.div>
 );
 
-const SectionBox = ({ title, children, className }: { title: string; children: React.ReactNode; className?: string }) => (
+const SectionBox = ({
+  title,
+  children,
+  className,
+}: {
+  title: string;
+  children: React.ReactNode;
+  className?: string;
+}) => (
   <motion.div
     variants={itemVariants}
     className={cn(
@@ -93,9 +109,9 @@ export default function BackendArchitecture() {
   }, []);
 
   return (
-    <div 
-      ref={containerRef} 
-      className="relative flex w-full aspect-video items-center justify-center overflow-hidden"
+    <div
+      ref={containerRef}
+      className="relative flex aspect-video w-full items-center justify-center overflow-hidden"
       style={{ height: `${BASE_WIDTH * 0.5 * scale}px`, minHeight: '300px' }}
     >
       {/* Scaled Wrapper */}
@@ -106,7 +122,7 @@ export default function BackendArchitecture() {
           transformOrigin: 'center center',
           flexShrink: 0,
         }}
-        className="flex items-center justify-center mx-auto"
+        className="mx-auto flex items-center justify-center"
       >
         <motion.div
           variants={containerVariants}
@@ -116,16 +132,25 @@ export default function BackendArchitecture() {
         >
           {/* LEVEL 1: CLIENT SIDE */}
           <SectionBox title="Client Layer" className="items-center justify-center gap-5">
-            <ArchNode title="Web App"><Laptop className="size-6 stroke-[1.5]" /></ArchNode>
-            <ArchNode title="Mobile App"><Smartphone className="size-6 stroke-[1.5]" /></ArchNode>
-            <ArchNode title="Admin"><UserIcon className="size-6 stroke-[1.5]" /></ArchNode>
+            <ArchNode title="Web App">
+              <Laptop className="size-6 stroke-[1.5]" />
+            </ArchNode>
+            <ArchNode title="Mobile App">
+              <Smartphone className="size-6 stroke-[1.5]" />
+            </ArchNode>
+            <ArchNode title="Admin">
+              <UserIcon className="size-6 stroke-[1.5]" />
+            </ArchNode>
           </SectionBox>
 
           <ConnectionLines />
 
           {/* LEVEL 2: API GATEWAY */}
           <SectionBox title="Entry Point">
-            <ArchNode title="API Gateway" className="size-32 border-blue-500/10 bg-gradient-to-br from-blue-500/5 to-transparent">
+            <ArchNode
+              title="API Gateway"
+              className="size-32 border-blue-500/10 bg-gradient-to-br from-blue-500/5 to-transparent"
+            >
               <ApiGatewayLogo className="size-14 opacity-80" />
             </ArchNode>
           </SectionBox>
@@ -134,11 +159,21 @@ export default function BackendArchitecture() {
 
           {/* LEVEL 3: MICROSERVICES */}
           <SectionBox title="Service Mesh" className="gap-4">
-            <ArchNode title="Auth Service" className="py-2"><AuthLogo className="size-5" /></ArchNode>
-            <ArchNode title="User Service" className="py-2"><UserLogo className="size-5" /></ArchNode>
-            <ArchNode title="Payment Service" className="py-2"><PaymentLogo className="size-5" /></ArchNode>
-            <ArchNode title="Order Service" className="py-2"><OrderLogo className="size-5" /></ArchNode>
-            <ArchNode title="Notification" className="py-2"><NotificationLogo className="size-5" /></ArchNode>
+            <ArchNode title="Auth Service" className="py-2">
+              <AuthLogo className="size-5" />
+            </ArchNode>
+            <ArchNode title="User Service" className="py-2">
+              <UserLogo className="size-5" />
+            </ArchNode>
+            <ArchNode title="Payment Service" className="py-2">
+              <PaymentLogo className="size-5" />
+            </ArchNode>
+            <ArchNode title="Order Service" className="py-2">
+              <OrderLogo className="size-5" />
+            </ArchNode>
+            <ArchNode title="Notification" className="py-2">
+              <NotificationLogo className="size-5" />
+            </ArchNode>
           </SectionBox>
 
           <ConnectionLines />
@@ -146,9 +181,15 @@ export default function BackendArchitecture() {
           {/* LEVEL 4: DATA & INFRA */}
           <SectionBox title="Data Persistence" className="gap-5">
             <div className="flex flex-col gap-4">
-              <ArchNode title="Primary DB"><PostgresLogo className="size-8" /></ArchNode>
-              <ArchNode title="Cache"><RedisLogo className="size-8" /></ArchNode>
-              <ArchNode title="Event Bus"><KafkaLogo className="size-8" /></ArchNode>
+              <ArchNode title="Primary DB">
+                <PostgresLogo className="size-8" />
+              </ArchNode>
+              <ArchNode title="Cache">
+                <RedisLogo className="size-8" />
+              </ArchNode>
+              <ArchNode title="Event Bus">
+                <KafkaLogo className="size-8" />
+              </ArchNode>
             </div>
           </SectionBox>
         </motion.div>
@@ -159,7 +200,10 @@ export default function BackendArchitecture() {
 
 function ConnectionLines() {
   return (
-    <motion.div variants={itemVariants} className="relative h-64 w-24 flex items-center justify-center">
+    <motion.div
+      variants={itemVariants}
+      className="relative flex h-64 w-24 items-center justify-center"
+    >
       <svg className="absolute h-full w-full overflow-visible" viewBox="0 0 100 100" fill="none">
         <g className="stroke-neutral-200 dark:stroke-neutral-800" strokeWidth="1.5">
           <path d="M 0 20 H 30 Q 40 20 40 30 V 40 Q 40 50 50 50 H 100" />
@@ -171,7 +215,7 @@ function ConnectionLines() {
             d="M 0 50 H 100"
             strokeDasharray="20 100"
             animate={{ strokeDashoffset: [120, -120] }}
-            transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
           />
         </g>
       </svg>

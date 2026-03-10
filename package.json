@@ -9,7 +9,14 @@
     "lint": "next lint",
     "lint:fix": "eslint . --fix",
     "prepare": "husky",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "typecheck": "tsc --noEmit"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "dependencies": {
     "clsx": "^2.1.1",
