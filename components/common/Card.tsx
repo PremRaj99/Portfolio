@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 export default function Card({
   className,
@@ -9,7 +9,7 @@ export default function Card({
 }) {
   return (
     <div
-      className={`bg-white/5 p-8 rounded-4xl shadow-xs shadow-white/25 border border-white/10 transition-shadow duration-300 ${className}`}
+      className={`rounded-4xl border border-white/10 bg-white/5 p-8 shadow-xs shadow-white/25 transition-shadow duration-300 ${className}`}
     >
       {children}
     </div>

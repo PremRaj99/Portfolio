@@ -1,4 +1,4 @@
-import Leader from "../common/Leader";
+import Leader from '../common/Leader';
 
 export default function Experience() {
   return (
