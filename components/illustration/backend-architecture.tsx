@@ -1,20 +1,22 @@
 'use client';
 
 import { cn } from '@/utils/cn';
-import { Laptop, Smartphone, UserIcon } from 'lucide-react';
-import { motion } from 'motion/react';
 import { easeInOut } from 'motion';
+import { motion } from 'motion/react';
 import React, { useEffect, useRef, useState } from 'react';
+import { CiMobile1 } from 'react-icons/ci';
+import { FaUserAlt } from 'react-icons/fa';
+import { FaLaptopCode } from 'react-icons/fa6';
+import { RiAdminLine } from 'react-icons/ri';
+import { TbAuth2Fa } from 'react-icons/tb';
 import {
   ApiGatewayLogo,
-  AuthLogo,
   KafkaLogo,
   NotificationLogo,
   OrderLogo,
   PaymentLogo,
   PostgresLogo,
   RedisLogo,
-  UserLogo,
 } from './backend-arch/svgs';
 
 // --- Global Config ---
@@ -51,11 +53,11 @@ const ArchNode = ({
   <motion.div
     whileHover={{ y: -2, boxShadow: '0 12px 24px -10px rgba(0,0,0,0.15)' }}
     className={cn(
-      'group relative flex cursor-pointer flex-col items-center justify-center rounded-xl border border-black/5 bg-white/60 p-4 backdrop-blur-md transition-all dark:border-white/10 dark:bg-neutral-900/60',
+      'group relative flex cursor-pointer flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition-all',
       className,
     )}
   >
-    <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100 dark:from-white/5" />
+    <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100 dark:from-amber-500/5" />
     <div className="relative z-10">{children}</div>
     {title && (
       <span className="text-muted-foreground relative z-10 mt-3 text-center text-[9px] font-semibold tracking-[0.15em] text-neutral-500 uppercase dark:text-neutral-400">
@@ -77,11 +79,11 @@ const SectionBox = ({
   <motion.div
     variants={itemVariants}
     className={cn(
-      'relative flex flex-col gap-4 rounded-3xl border border-black/5 bg-black/[0.02] p-6 shadow-[inset_0_1px_0_0_rgba(255,255,255,0.5)] dark:border-white/[0.08] dark:bg-white/[0.02] dark:shadow-[inset_0_1px_0_0_rgba(255,255,255,0.02)]',
+      'relative flex flex-col gap-4 rounded-3xl border border-neutral-100/10 bg-black p-6 shadow-2xl shadow-black/60',
       className,
     )}
   >
-    <div className="absolute -top-2.5 left-6 bg-neutral-50 px-2 dark:bg-neutral-950">
+    <div className="absolute -top-2.5 left-6 rounded-md border border-neutral-100/20 bg-neutral-950 px-2">
       <div className="text-[10px] font-medium tracking-widest text-neutral-400 uppercase">
         {title}
       </div>
@@ -113,7 +115,7 @@ export default function BackendArchitecture() {
   return (
     <div
       ref={containerRef}
-      className="relative flex aspect-video w-96 items-center justify-center overflow-hidden"
+      className="relative flex aspect-video w-full items-center justify-center"
       style={{ height: `${BASE_WIDTH * 0.5 * scale}px`, minHeight: '300px' }}
     >
       {/* Scaled Wrapper */}
@@ -135,13 +137,13 @@ export default function BackendArchitecture() {
           {/* LEVEL 1: CLIENT SIDE */}
           <SectionBox title="Client Layer" className="items-center justify-center gap-5">
             <ArchNode title="Web App">
-              <Laptop className="size-6 stroke-[1.5]" />
+              <FaLaptopCode className="size-6" />
             </ArchNode>
             <ArchNode title="Mobile App">
-              <Smartphone className="size-6 stroke-[1.5]" />
+              <CiMobile1 className="size-6" />
             </ArchNode>
             <ArchNode title="Admin">
-              <UserIcon className="size-6 stroke-[1.5]" />
+              <RiAdminLine className="size-6" />
             </ArchNode>
           </SectionBox>
 
@@ -162,26 +164,26 @@ export default function BackendArchitecture() {
           {/* LEVEL 3: MICROSERVICES */}
           <SectionBox title="Service Mesh" className="gap-4">
             <ArchNode title="Auth Service" className="py-2">
-              <AuthLogo className="size-5" />
+              <TbAuth2Fa className="size-6" />
             </ArchNode>
             <ArchNode title="User Service" className="py-2">
-              <UserLogo className="size-5" />
+              <FaUserAlt className="size-5" />
             </ArchNode>
             <ArchNode title="Payment Service" className="py-2">
-              <PaymentLogo className="size-5" />
+              <PaymentLogo className="size-7" />
             </ArchNode>
             <ArchNode title="Order Service" className="py-2">
-              <OrderLogo className="size-5" />
+              <OrderLogo className="size-7" />
             </ArchNode>
             <ArchNode title="Notification" className="py-2">
-              <NotificationLogo className="size-5" />
+              <NotificationLogo className="size-7" />
             </ArchNode>
           </SectionBox>
 
           <ConnectionLines />
 
           {/* LEVEL 4: DATA & INFRA */}
-          <SectionBox title="Data Persistence" className="gap-5">
+          <SectionBox title="Data & Infra" className="gap-5">
             <div className="flex flex-col gap-4">
               <ArchNode title="Primary DB">
                 <PostgresLogo className="size-8" />

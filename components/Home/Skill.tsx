@@ -1,9 +1,9 @@
 'use client';
+import type { HTMLAttributes, ReactNode, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
-import type { RefObject, HTMLAttributes, ReactNode } from 'react';
 // Ensure this path matches your project
-import FrontendIllustration from '../illustration/responsive';
 import BackendArchitecture from '../illustration/backend-architecture';
+import FrontendIllustration from '../illustration/responsive';
 
 // --- Animation Hook ---
 const useInView = (options = {}): [RefObject<HTMLDivElement | null>, boolean] => {
@@ -140,7 +140,20 @@ const roles: Role[] = [
     stack: 'Node.js, Postgres, Auth, Security',
     screen: (
       <div className="absolute inset-0 inset-y-0 left-0 w-[500px] transition-all duration-500 md:w-full">
-        <BackendArchitecture />
+        <div
+          className="absolute inset-0 z-0 mask-t-from-95% mask-r-from-95% mask-b-from-95% mask-l-from-95%"
+          style={{
+            background: '#070707',
+            backgroundImage: `
+        radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px)
+      `,
+            backgroundSize: '20px 20px',
+            backgroundPosition: '0 0',
+          }}
+        />
+        <div className="h-full w-full px-4">
+          <BackendArchitecture />
+        </div>
       </div>
     ),
   },
@@ -196,7 +209,9 @@ export default function ModernSkills() {
               delay={index * 50}
             >
               <div className="flex flex-col gap-2 overflow-hidden">
-                <div className="relative h-[60%] min-h-72 w-full min-w-60">{role.screen}</div>
+                <div className="relative h-[60%] min-h-72 w-full min-w-60 md:h-full">
+                  {role.screen}
+                </div>
 
                 <h2 className="mt-2 text-2xl font-bold">{role.title}</h2>
                 <p className="mb-2 text-sm text-gray-500">{role.description}</p>
