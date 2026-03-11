@@ -202,22 +202,77 @@ function ConnectionLines() {
   return (
     <motion.div
       variants={itemVariants}
-      className="relative flex h-64 w-24 items-center justify-center"
+      className="relative hidden h-64 w-24 items-center justify-center md:flex"
     >
-      <svg className="absolute h-full w-full overflow-visible" viewBox="0 0 100 100" fill="none">
+      <svg
+        className="absolute h-full w-full overflow-visible"
+        viewBox="0 0 100 100"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <defs>
+          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2.5" result="blur" />
+
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+
+        {/* Static Background Paths (The "Wires") */}
+
         <g className="stroke-neutral-200 dark:stroke-neutral-800" strokeWidth="1.5">
           <path d="M 0 20 H 30 Q 40 20 40 30 V 40 Q 40 50 50 50 H 100" />
+
           <path d="M 0 50 H 100" />
+
           <path d="M 0 80 H 30 Q 40 80 40 70 V 60 Q 40 50 50 50 H 100" />
         </g>
-        <g className="stroke-blue-500 dark:stroke-blue-400" strokeWidth="2" strokeLinecap="round">
+
+        {/* Animated Beams (Left to Right Flow) */}
+
+        <g
+          className="stroke-red-500 dark:stroke-orange-400/30"
+          strokeWidth="2"
+          strokeLinecap="round"
+          filter="url(#glow)"
+        >
+          {/* Top Beam */}
+
+          <motion.path
+            d="M 0 20 H 30 Q 40 20 40 30 V 40 Q 40 50 50 50 H 100"
+            strokeDasharray="20 100" // Length of the pulse and the gap
+            animate={{ strokeDashoffset: [120, -120] }} // Pulls the dash from left to right
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 0.5 }}
+          />
+
+          {/* Middle Beam */}
+
           <motion.path
             d="M 0 50 H 100"
+            strokeDasharray="30 100"
+            animate={{ strokeDashoffset: [130, -130] }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 0.9 }}
+          />
+
+          {/* Bottom Beam */}
+
+          <motion.path
+            d="M 0 80 H 30 Q 40 80 40 70 V 60 Q 40 50 50 50 H 100"
             strokeDasharray="20 100"
             animate={{ strokeDashoffset: [120, -120] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
+            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 0.5 }}
           />
         </g>
+
+        {/* Anchor Dots */}
+
+        <circle cx="0" cy="20" r="2" className="fill-neutral-300 dark:fill-neutral-600" />
+
+        <circle cx="0" cy="50" r="2" className="fill-neutral-300 dark:fill-neutral-600" />
+
+        <circle cx="0" cy="80" r="2" className="fill-neutral-300 dark:fill-neutral-600" />
+
+        <circle cx="100" cy="50" r="2.5" className="animate-pulse fill-blue-500" />
       </svg>
     </motion.div>
   );

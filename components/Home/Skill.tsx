@@ -138,7 +138,11 @@ const roles: Role[] = [
     description:
       'Creating the secure logic and fast APIs that power your application behind the scenes.',
     stack: 'Node.js, Postgres, Auth, Security',
-    screen: <BackendArchitecture />,
+    screen: (
+      <div className="absolute inset-y-0 left-0 w-[85%] transition-all duration-500">
+        <BackendArchitecture />
+      </div>
+    ),
   },
   {
     title: 'Data & Performance',
