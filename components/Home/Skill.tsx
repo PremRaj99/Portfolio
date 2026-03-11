@@ -139,7 +139,7 @@ const roles: Role[] = [
       'Creating the secure logic and fast APIs that power your application behind the scenes.',
     stack: 'Node.js, Postgres, Auth, Security',
     screen: (
-      <div className="absolute inset-y-0 left-0 w-[85%] transition-all duration-500">
+      <div className="absolute inset-0 inset-y-0 left-0 w-[500px] transition-all duration-500 md:w-full">
         <BackendArchitecture />
       </div>
     ),
@@ -196,9 +196,7 @@ export default function ModernSkills() {
               delay={index * 50}
             >
               <div className="flex flex-col gap-2 overflow-hidden">
-                <div className="relative h-[60%] min-h-60 w-[55%] min-w-60 sm:h-65 sm:w-65 md:h-72 md:w-120">
-                  {role.screen}
-                </div>
+                <div className="relative h-[60%] min-h-72 w-full min-w-60">{role.screen}</div>
 
                 <h2 className="mt-2 text-2xl font-bold">{role.title}</h2>
                 <p className="mb-2 text-sm text-gray-500">{role.description}</p>

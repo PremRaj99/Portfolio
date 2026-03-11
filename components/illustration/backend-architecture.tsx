@@ -18,7 +18,7 @@ import {
 } from './backend-arch/svgs';
 
 // --- Global Config ---
-const BASE_WIDTH = 1200; // The "natural" width of the architecture
+const BASE_WIDTH = 900; // The "natural" width of the architecture
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -100,6 +100,8 @@ export default function BackendArchitecture() {
       const parentWidth = containerRef.current.offsetWidth;
       // Calculate scale based on parent width vs the 1200px design width
       const newScale = Math.min(parentWidth / BASE_WIDTH, 1);
+      console.log('Parent width: ', parentWidth);
+      console.log('Calculated scale: ', newScale);
       setScale(newScale);
     };
 
@@ -111,7 +113,7 @@ export default function BackendArchitecture() {
   return (
     <div
       ref={containerRef}
-      className="relative flex aspect-video w-full items-center justify-center overflow-hidden"
+      className="relative flex aspect-video w-96 items-center justify-center overflow-hidden"
       style={{ height: `${BASE_WIDTH * 0.5 * scale}px`, minHeight: '300px' }}
     >
       {/* Scaled Wrapper */}
@@ -202,7 +204,7 @@ function ConnectionLines() {
   return (
     <motion.div
       variants={itemVariants}
-      className="relative hidden h-64 w-24 items-center justify-center md:flex"
+      className="relative flex h-64 w-24 min-w-24 items-center justify-center"
     >
       <svg
         className="absolute h-full w-full overflow-visible"
