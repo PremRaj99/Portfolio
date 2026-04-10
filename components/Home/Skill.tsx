@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from 'react';
 // Ensure this path matches your project
 import BackendArchitecture from '../illustration/backend-architecture';
 import FrontendIllustration from '../illustration/responsive';
+import DataAndPerformance from '../illustration/data-and-performance';
 
 // --- Animation Hook ---
 const useInView = (options = {}): [RefObject<HTMLDivElement | null>, boolean] => {
@@ -161,7 +162,11 @@ const roles: Role[] = [
     title: 'Data & Performance',
     description: 'Structuring data so it loads instantly and scales as you grow.',
     stack: 'SQL, NoSQL, Redis, Caching',
-    screen: <></>,
+    screen: (
+      <div className="absolute inset-y-0 left-0 w-full py-10 transition-all duration-500 md:py-0">
+        <DataAndPerformance />
+      </div>
+    ),
   },
   {
     title: 'Cloud & DevOps',
