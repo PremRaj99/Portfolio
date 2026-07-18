@@ -1,15 +1,60 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
-import Header from './data-and-performance/header'; // Adjust path if needed
-import { motion, AnimatePresence } from 'framer-motion';
-import { IoReload } from 'react-icons/io5';
-import { FaCheckCircle } from 'react-icons/fa';
 
-const BASE_WIDTH = 1024;
-const BASE_HEIGHT = BASE_WIDTH * (9 / 16);
+import { cn } from '@/utils/cn';
+import { motion } from 'motion/react';
+import React, { useEffect, useRef, useState } from 'react';
+import { FaBolt, FaRocket, FaDatabase, FaHourglassHalf, FaRegFrown } from 'react-icons/fa';
+import { SiRedis } from 'react-icons/si';
+
+const BASE_WIDTH = 900;
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.1 },
+  },
+};
+
+// --- Bold Item Node with Softened Color Contrast ---
+const BoldItem = ({
+  title,
+  subtitle,
+  children,
+  isFast = true,
+}: {
+  title: string;
+  subtitle?: string;
+  children: React.ReactNode;
+  isFast?: boolean;
+}) => {
+  return (
+    <motion.div
+      whileHover={{ scale: 1.06, y: -2 }}
+      transition={{ duration: 0.2 }}
+      className="group flex cursor-pointer flex-col items-center justify-center text-center transition-all"
+    >
+      <div className="flex items-center justify-center p-1 opacity-90 transition-transform group-hover:scale-105 group-hover:opacity-100">
+        {children}
+      </div>
+
+      <span className="mt-2 text-sm font-extrabold tracking-wider text-neutral-200">{title}</span>
+
+      {subtitle && (
+        <span
+          className={cn(
+            'mt-0.5 font-mono text-[11px] font-semibold',
+            isFast ? 'text-emerald-400/80' : 'text-rose-400/80',
+          )}
+        >
+          {subtitle}
+        </span>
+      )}
+    </motion.div>
+  );
+};
 
 export default function DataAndPerformance() {
-  const [restartKey, setRestartKey] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const [scale, setScale] = useState(1);
 
@@ -29,230 +74,108 @@ export default function DataAndPerformance() {
   return (
     <div
       ref={containerRef}
-      className="flex w-full flex-col items-center justify-center gap-4 overflow-hidden p-2 text-neutral-200"
+      className="relative flex aspect-video w-full items-center justify-center overflow-hidden bg-transparent"
+      style={{ height: `${BASE_WIDTH * 0.5 * scale}px`, minHeight: '300px' }}
     >
-      <button
-        onClick={() => setRestartKey((prev) => prev + 1)}
-        className="flex items-center gap-2 rounded-md border border-neutral-700 bg-neutral-800 px-4 py-2 text-xs font-medium text-white shadow-lg shadow-black/50 transition-transform hover:scale-105 hover:bg-neutral-700 active:scale-95"
-      >
-        <IoReload />
-        Replay Animation
-      </button>
-
-      {/* FIX: Changed items-center to items-start below */}
+      {/* Scaled Canvas */}
       <div
-        className="relative flex w-full items-start justify-center"
         style={{
-          height: `${BASE_HEIGHT * scale}px`,
+          width: `${BASE_WIDTH}px`,
+          transform: `scale(${scale})`,
+          transformOrigin: 'center center',
+          flexShrink: 0,
         }}
+        className="mx-auto flex items-center justify-center px-4"
       >
-        {/* Scaled Browser Window */}
-        <div
-          style={{
-            width: `${BASE_WIDTH}px`,
-            height: `${BASE_HEIGHT}px`,
-            transform: `scale(${scale})`,
-            transformOrigin: 'top center',
-            flexShrink: 0,
-          }}
-          className="relative flex flex-col overflow-hidden rounded-xl border-[12px] border-black shadow-xl shadow-black/60"
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
+          className="relative z-10 flex w-full items-center justify-between gap-0 font-sans"
         >
-          {/* Top Camera/Notch area */}
-          <div className="absolute top-0 left-1/2 z-50 flex h-5 w-24 -translate-x-1/2 items-center justify-center gap-2 rounded-b-xl bg-black">
-            <div className="size-1.5 rounded-full border border-white/10 bg-neutral-800"></div>
-            <div className="size-1.5 rounded-full border border-white/10 bg-neutral-800"></div>
-            <div className="size-1.5 rounded-full border border-white/10 bg-neutral-800"></div>
+          {/* OPTIMIZED / FAST SIDE */}
+          <div className="flex flex-col items-center gap-7">
+            <div className="text-xs font-extrabold tracking-widest text-emerald-400/80 uppercase">
+              ⚡ Instant Load (0.04s)
+            </div>
+
+            <BoldItem title="Instant Load" subtitle="0.04s Blitz Speed" isFast>
+              <FaBolt size={44} className="text-emerald-400/90" />
+            </BoldItem>
+
+            <BoldItem title="Smart Caching" subtitle="Redis Memory Storage" isFast>
+              <SiRedis size={46} className="text-red-500/90" />
+            </BoldItem>
+
+            <BoldItem title="High Performance" subtitle="Smooth User Experience" isFast>
+              <FaRocket size={40} className="text-cyan-400/90" />
+            </BoldItem>
           </div>
 
-          <div className="relative flex h-full w-full flex-col bg-neutral-950">
-            {/* Browser Header */}
-            <Header setRestartKey={setRestartKey} />
+          {/* VS SPEED INDICATOR (Softened Contrast) */}
+          <div className="relative flex h-64 w-32 flex-col items-center justify-between">
+            <div className="flex flex-col items-center justify-center text-center font-mono">
+              <span className="text-xs font-bold text-emerald-400/80">INSTANT</span>
+              <span className="my-0.5 text-[10px] font-bold text-neutral-500">VS</span>
+              <span className="text-xs font-bold text-rose-400/80">LAGGY</span>
+            </div>
 
-            {/* Content Area - Split Screen */}
-            <div
-              key={restartKey}
-              className="flex flex-1 divide-x-2 divide-neutral-800 overflow-hidden"
+            <svg
+              className="absolute inset-0 h-full w-full overflow-visible"
+              viewBox="0 0 100 100"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
             >
-              <FastLoadingSide />
-              <SlowLoadingSide />
+              {/* Fast Wire Track */}
+              <path d="M 10 20 H 40 V 80 H 10" className="stroke-neutral-800/80" strokeWidth="2" />
+              <motion.path
+                d="M 10 20 H 40 V 80 H 10"
+                className="stroke-emerald-500/50"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeDasharray="20 70"
+                animate={{ strokeDashoffset: [90, -90] }}
+                transition={{ duration: 2.2, repeat: Infinity, ease: 'linear' }}
+              />
+
+              {/* Slow Wire Track */}
+              <path d="M 90 20 H 60 V 80 H 90" className="stroke-neutral-800/80" strokeWidth="2" />
+              <motion.path
+                d="M 90 20 H 60 V 80 H 90"
+                className="stroke-rose-500/40"
+                strokeWidth="2.5"
+                strokeLinecap="round"
+                strokeDasharray="20 70"
+                animate={{ strokeDashoffset: [90, -90] }}
+                transition={{ duration: 4.5, repeat: Infinity, ease: 'linear' }}
+              />
+            </svg>
+
+            <div className="text-[10px] font-bold tracking-widest text-neutral-400 uppercase">
+              BENCHMARK
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  );
-}
 
-// --- Sub-components for the Split Screen ---
+          {/* UNOPTIMIZED / SLOW SIDE */}
+          <div className="flex flex-col items-center gap-7">
+            <div className="text-xs font-extrabold tracking-widest text-rose-400/80 uppercase">
+              ⏳ Slow Loading (5.20s)
+            </div>
 
-function FastLoadingSide() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [elapsedTime, setElapsedTime] = useState(0);
+            <BoldItem title="High Delay" subtitle="5.2s Waiting Time" isFast={false}>
+              <FaHourglassHalf size={42} className="text-rose-400/90" />
+            </BoldItem>
 
-  useEffect(() => {
-    const targetTime = 0.4;
-    const startTime = Date.now();
+            <BoldItem title="Heavy Database" subtitle="Uncached Slow Queries" isFast={false}>
+              <FaDatabase size={40} className="text-amber-400/90" />
+            </BoldItem>
 
-    const interval = setInterval(() => {
-      const current = Date.now();
-      const elapsed = (current - startTime) / 1000;
-
-      if (elapsed >= targetTime) {
-        setElapsedTime(targetTime);
-        setIsLoading(false);
-        clearInterval(interval);
-      } else {
-        setElapsedTime(elapsed);
-      }
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="flex flex-1 flex-col bg-neutral-950">
-      <div className="border-b border-neutral-800 bg-green-950/30 px-4 py-2 text-center text-sm font-semibold text-green-400">
-        Optimized Loading ({elapsedTime.toFixed(2)}s)
-      </div>
-      <div className="flex-1 p-6">
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <SkeletonList key="skeleton-fast" count={4} />
-          ) : (
-            <DataList key="data-fast" />
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
-}
-
-function SlowLoadingSide() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [elapsedTime, setElapsedTime] = useState(0);
-
-  useEffect(() => {
-    const targetTime = 5.2;
-    const startTime = Date.now();
-
-    const interval = setInterval(() => {
-      const current = Date.now();
-      const elapsed = (current - startTime) / 1000;
-
-      if (elapsed >= targetTime) {
-        setElapsedTime(targetTime);
-        setIsLoading(false);
-        clearInterval(interval);
-      } else {
-        setElapsedTime(elapsed);
-      }
-    }, 30);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <div className="relative flex flex-1 flex-col bg-neutral-950">
-      <div className="border-b border-neutral-800 bg-red-950/30 px-4 py-2 text-center text-sm font-semibold text-red-400">
-        Unoptimized Loading ({elapsedTime.toFixed(2)}s)
-      </div>
-
-      {/* Floating Timer Badge */}
-      {isLoading && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
-          className="absolute bottom-6 left-1/2 z-10 flex -translate-x-1/2 items-center gap-2 rounded-full border border-neutral-700 bg-neutral-800/90 px-4 py-2 font-mono text-sm font-medium text-white shadow-lg backdrop-blur-md"
-        >
-          <IoReload className="animate-spin text-neutral-400" />
-          {elapsedTime.toFixed(2)}s
-        </motion.div>
-      )}
-
-      <div className="flex-1 p-6">
-        <AnimatePresence mode="wait">
-          {isLoading ? (
-            <SkeletonList key="skeleton-slow" count={4} />
-          ) : (
-            <DataList key="data-slow" />
-          )}
-        </AnimatePresence>
-      </div>
-    </div>
-  );
-}
-
-// --- UI Building Blocks ---
-
-function SkeletonList({ count }: { count: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="flex flex-col gap-4"
-    >
-      {Array.from({ length: count }).map((_, i) => (
-        <div
-          key={i}
-          className="flex items-center gap-4 rounded-xl border border-neutral-800/50 bg-neutral-900/30 p-4"
-        >
-          <motion.div
-            animate={{ opacity: [0.3, 0.7, 0.3] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
-            className="size-12 rounded-full bg-neutral-800"
-          />
-          <div className="flex-1 space-y-3">
-            <motion.div
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: 0.1 }}
-              className="h-4 w-3/4 rounded-md bg-neutral-800"
-            />
-            <motion.div
-              animate={{ opacity: [0.3, 0.7, 0.3] }}
-              transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut', delay: 0.2 }}
-              className="h-3 w-1/2 rounded-md bg-neutral-800"
-            />
-          </div>
-        </div>
-      ))}
-    </motion.div>
-  );
-}
-
-function DataList() {
-  return (
-    <motion.div
-      initial="hidden"
-      animate="visible"
-      variants={{
-        hidden: { opacity: 0 },
-        visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
-      }}
-      className="flex flex-col gap-4"
-    >
-      {Array.from({ length: 4 }).map((_, i) => (
-        <motion.div
-          key={i}
-          variants={{
-            hidden: { opacity: 0, y: 10 },
-            visible: {
-              opacity: 1,
-              y: 0,
-              transition: { type: 'spring', stiffness: 300, damping: 24 },
-            },
-          }}
-          className="flex cursor-pointer items-center gap-4 rounded-xl border border-neutral-800 bg-neutral-900 p-4 shadow-sm transition-all hover:border-neutral-700 hover:bg-neutral-800/80"
-        >
-          <div className="flex size-12 items-center justify-center rounded-full bg-blue-900/40 text-blue-400">
-            <FaCheckCircle size={20} />
-          </div>
-          <div className="flex-1 space-y-2">
-            <div className="h-4 w-3/4 rounded-md bg-neutral-300"></div>
-            <div className="h-3 w-1/2 rounded-md bg-neutral-600"></div>
+            <BoldItem title="Poor Experience" subtitle="Lost Website Visitors" isFast={false}>
+              <FaRegFrown size={40} className="text-neutral-400/90" />
+            </BoldItem>
           </div>
         </motion.div>
-      ))}
-    </motion.div>
+      </div>
+    </div>
   );
 }

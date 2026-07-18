@@ -1,10 +1,15 @@
 'use client';
+
 import type { HTMLAttributes, ReactNode, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
-// Ensure this path matches your project
+import { motion, AnimatePresence } from 'framer-motion';
+import { IoClose, IoExpandOutline } from 'react-icons/io5';
+
 import BackendArchitecture from '../illustration/backend-architecture';
 import FrontendIllustration from '../illustration/responsive';
 import DataAndPerformance from '../illustration/data-and-performance';
+import CloudAndDevOps from '../illustration/cloud-and-devops';
+import IntegrationsIllustration from '../illustration/integrations';
 
 // --- Animation Hook ---
 const useInView = (options = {}): [RefObject<HTMLDivElement | null>, boolean] => {
@@ -117,6 +122,7 @@ const FloatingParticle = ({ delay, size, duration, x, y }: FloatingParticleProps
 
 // --- Data ---
 type Role = {
+  id: string;
   title: string;
   description: string;
   stack: string;
@@ -125,6 +131,7 @@ type Role = {
 
 const roles: Role[] = [
   {
+    id: 'frontend',
     title: 'Frontend Engineering',
     description: 'Building pixel-perfect, interactive web apps that look great on any device.',
     stack: 'React, Next.js, Tailwind, Motion',
@@ -135,54 +142,66 @@ const roles: Role[] = [
     ),
   },
   {
+    id: 'backend',
     title: 'Backend Architecture',
     description:
       'Creating the secure logic and fast APIs that power your application behind the scenes.',
     stack: 'Node.js, Postgres, Auth, Security',
     screen: (
-      <div className="absolute inset-0 inset-y-0 left-0 w-[500px] transition-all duration-500 md:w-full">
-        <div
-          className="absolute inset-0 z-0 mask-t-from-95% mask-r-from-95% mask-b-from-95% mask-l-from-95%"
-          style={{
-            background: '#070707',
-            backgroundImage: `
-        radial-gradient(circle, rgba(255, 255, 255, 0.2) 1px, transparent 1px)
-      `,
-            backgroundSize: '20px 20px',
-            backgroundPosition: '0 0',
-          }}
-        />
-        <div className="h-full w-full px-4">
-          <BackendArchitecture />
-        </div>
+      <div className="absolute inset-0 flex w-full items-center justify-center transition-all duration-500">
+        <BackendArchitecture />
       </div>
     ),
   },
   {
+    id: 'data',
     title: 'Data & Performance',
     description: 'Structuring data so it loads instantly and scales as you grow.',
     stack: 'SQL, NoSQL, Redis, Caching',
     screen: (
-      <div className="absolute inset-y-0 left-0 w-full py-10 transition-all duration-500 md:py-0">
+      <div className="absolute inset-0 flex w-full items-center justify-center transition-all duration-500">
         <DataAndPerformance />
       </div>
     ),
   },
   {
+    id: 'cloud',
     title: 'Cloud & DevOps',
     description: 'Ensuring your website stays online, secure, and runs smoothly 24/7.',
     stack: 'AWS, Vercel, Docker, CI/CD',
-    screen: <></>,
+    screen: (
+      <div className="absolute inset-0 flex w-full items-center justify-center transition-all duration-500">
+        <CloudAndDevOps />
+      </div>
+    ),
   },
   {
+    id: 'integrations',
     title: 'Integrations',
     description: 'Seamlessly connecting payments, analytics, and external tools to your business.',
-    stack: 'Stripe, PayPal, Google Analytics',
-    screen: <></>,
+    stack: 'Stripe, Razorpay, Redis, Google Analytics',
+    screen: (
+      <div className="absolute inset-0 flex w-full items-center justify-center transition-all duration-500">
+        <IntegrationsIllustration />
+      </div>
+    ),
   },
 ];
 
 export default function ModernSkills() {
+  const [selectedRole, setSelectedRole] = useState<Role | null>(null);
+
+  // Close on ESC key press
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedRole(null);
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, []);
+
   return (
     <div className="relative min-h-screen overflow-hidden bg-black px-4 py-8 text-white sm:px-8">
       {/* Floating Particles */}
@@ -202,24 +221,36 @@ export default function ModernSkills() {
         <AnimatedDiv className="mb-12 text-center" delay={0} direction="up">
           <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">Technical Skills</h1>
           <p className="mb-8 text-gray-400">
-            My expertise across different technologies and frameworks
+            Click on any architecture illustration to view it in full screen
           </p>
         </AnimatedDiv>
 
+        {/* Skill Cards Grid */}
         <div className="grid w-full gap-8 overflow-hidden md:grid-cols-2">
           {roles.map((role: Role, index) => (
             <AnimatedDiv
-              key={index}
-              className="container flex flex-col gap-4 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4"
+              key={role.id}
+              className="group relative container flex flex-col gap-4 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4"
               delay={index * 50}
             >
               <div className="flex flex-col gap-2 overflow-hidden">
-                <div className="relative h-[60%] min-h-72 w-full min-w-60 md:h-full">
+                {/* Architecture Canvas (Click to Pop Out Architecture) */}
+                <div
+                  onClick={() => setSelectedRole(role)}
+                  className="group/canvas relative h-[60%] min-h-72 w-full min-w-60 cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 md:h-full"
+                  title={`Click to expand ${role.title} Architecture`}
+                >
+                  {/* Expand Hint Overlay (Monochrome) */}
+                  <div className="absolute top-3 right-3 z-20 flex items-center gap-1 rounded-full border border-neutral-700/80 bg-neutral-900/80 px-2.5 py-1 font-mono text-[10px] text-neutral-300 opacity-70 backdrop-blur-md transition-all group-hover/canvas:border-neutral-400 group-hover/canvas:bg-neutral-800 group-hover/canvas:text-white group-hover/canvas:opacity-100">
+                    <IoExpandOutline size={12} />
+                    <span>Expand Architecture</span>
+                  </div>
+
                   {role.screen}
                 </div>
 
                 <h2 className="mt-2 text-2xl font-bold">{role.title}</h2>
-                <p className="mb-2 text-sm text-gray-500">{role.description}</p>
+                <p className="mb-2 text-sm text-gray-400">{role.description}</p>
 
                 {/* Tech Stack Pills */}
                 <div className="item-center flex flex-wrap gap-2">
@@ -237,6 +268,41 @@ export default function ModernSkills() {
           ))}
         </div>
       </div>
+
+      {/* Pure Architecture Pop-Out (NO Outer Box Container) */}
+      <AnimatePresence>
+        {selectedRole && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-xl sm:p-8"
+            onClick={() => setSelectedRole(null)}
+          >
+            {/* Close Button Floating in Top Right */}
+            <button
+              onClick={() => setSelectedRole(null)}
+              className="absolute top-6 right-6 z-50 flex cursor-pointer items-center gap-1.5 rounded-full border border-white/20 bg-neutral-900/90 px-3.5 py-1.5 font-mono text-xs text-neutral-200 shadow-xl backdrop-blur-md transition-colors hover:bg-white/20 hover:text-white"
+              aria-label="Close Fullscreen View"
+            >
+              <IoClose size={18} />
+              <span>Close (ESC)</span>
+            </button>
+
+            {/* Floating Architecture Canvas Direct Mount (NO Container Box / Border) */}
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.85, opacity: 0 }}
+              transition={{ type: 'spring', damping: 25, stiffness: 300 }}
+              className="relative flex aspect-video h-[80vh] max-h-[90vh] w-full max-w-6xl items-center justify-center overflow-hidden p-2 sm:p-4"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {selectedRole.screen}
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }

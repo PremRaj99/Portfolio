@@ -20,7 +20,7 @@ import {
 } from './backend-arch/svgs';
 
 // --- Global Config ---
-const BASE_WIDTH = 900; // The "natural" width of the architecture
+const BASE_WIDTH = 900;
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -31,43 +31,55 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 15, filter: 'blur(4px)' },
+  hidden: { opacity: 0, y: 10 },
   visible: {
     opacity: 1,
     y: 0,
-    filter: 'blur(0px)',
-    transition: { duration: 0.8, ease: easeInOut },
+    transition: { duration: 0.5, ease: easeInOut },
   },
 };
 
-// --- Helper Components ---
+// --- Clean Bold Node (No Container Box) ---
 const ArchNode = ({
   title,
+  subtitle,
   children,
   className,
 }: {
   title?: string;
+  subtitle?: string;
   children: React.ReactNode;
   className?: string;
 }) => (
   <motion.div
-    whileHover={{ y: -2, boxShadow: '0 12px 24px -10px rgba(0,0,0,0.15)' }}
+    whileHover={{ scale: 1.06, y: -2 }}
+    transition={{ duration: 0.2 }}
     className={cn(
-      'group relative flex cursor-pointer flex-col items-center justify-center rounded-xl border border-white/10 bg-white/5 p-4 backdrop-blur-md transition-all',
+      'group flex cursor-pointer flex-col items-center justify-center text-center transition-all',
       className,
     )}
   >
-    <div className="absolute inset-0 rounded-xl bg-gradient-to-b from-white/20 to-transparent opacity-0 transition-opacity group-hover:opacity-100 dark:from-amber-500/5" />
-    <div className="relative z-10">{children}</div>
+    {/* Icon Container */}
+    <div className="flex items-center justify-center p-1 opacity-90 transition-transform group-hover:scale-105 group-hover:opacity-100">
+      {children}
+    </div>
+
+    {/* Title */}
     {title && (
-      <span className="text-muted-foreground relative z-10 mt-3 text-center text-[9px] font-semibold tracking-[0.15em] text-neutral-500 uppercase dark:text-neutral-400">
-        {title}
+      <span className="mt-2 text-sm font-extrabold tracking-wider text-neutral-200">{title}</span>
+    )}
+
+    {/* Subtitle */}
+    {subtitle && (
+      <span className="mt-0.5 font-mono text-[11px] font-semibold text-neutral-400/80">
+        {subtitle}
       </span>
     )}
   </motion.div>
 );
 
-const SectionBox = ({
+// --- Stage Column (No Outer Box) ---
+const StageColumn = ({
   title,
   children,
   className,
@@ -76,19 +88,14 @@ const SectionBox = ({
   children: React.ReactNode;
   className?: string;
 }) => (
-  <motion.div
-    variants={itemVariants}
-    className={cn(
-      'relative flex flex-col gap-4 rounded-3xl border border-neutral-100/10 bg-black p-6 shadow-2xl shadow-black/60',
-      className,
-    )}
-  >
-    <div className="absolute -top-2.5 left-6 rounded-md border border-neutral-100/20 bg-neutral-950 px-2">
-      <div className="text-[10px] font-medium tracking-widest text-neutral-400 uppercase">
-        {title}
-      </div>
+  <motion.div variants={itemVariants} className={cn('flex flex-col items-center gap-6', className)}>
+    {/* Stage Header Label */}
+    <div className="text-xs font-extrabold tracking-widest text-neutral-400/80 uppercase">
+      {title}
     </div>
-    {children}
+
+    {/* Stage Items */}
+    <div className="flex flex-col items-center gap-6">{children}</div>
   </motion.div>
 );
 
@@ -100,10 +107,7 @@ export default function BackendArchitecture() {
     const handleResize = () => {
       if (!containerRef.current) return;
       const parentWidth = containerRef.current.offsetWidth;
-      // Calculate scale based on parent width vs the 1200px design width
       const newScale = Math.min(parentWidth / BASE_WIDTH, 1);
-      console.log('Parent width: ', parentWidth);
-      console.log('Calculated scale: ', newScale);
       setScale(newScale);
     };
 
@@ -115,10 +119,10 @@ export default function BackendArchitecture() {
   return (
     <div
       ref={containerRef}
-      className="relative flex aspect-video w-full items-center justify-center"
+      className="relative flex aspect-video w-full items-center justify-center overflow-hidden bg-transparent"
       style={{ height: `${BASE_WIDTH * 0.5 * scale}px`, minHeight: '300px' }}
     >
-      {/* Scaled Wrapper */}
+      {/* Scaled Architecture Canvas */}
       <div
         style={{
           width: `${BASE_WIDTH}px`,
@@ -126,87 +130,92 @@ export default function BackendArchitecture() {
           transformOrigin: 'center center',
           flexShrink: 0,
         }}
-        className="mx-auto flex items-center justify-center"
+        className="mx-auto flex items-center justify-center px-4"
       >
         <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="relative z-10 flex w-full items-center justify-center gap-0"
+          className="relative z-10 flex w-full items-center justify-between gap-0 font-sans"
         >
-          {/* LEVEL 1: CLIENT SIDE */}
-          <SectionBox title="Client Layer" className="items-center justify-center gap-5">
-            <ArchNode title="Web App">
-              <FaLaptopCode className="size-6" />
+          {/* STAGE 1: CLIENT LAYER */}
+          <StageColumn title="Client Layer">
+            <ArchNode title="Web App" subtitle="React & Next.js">
+              <FaLaptopCode size={38} className="text-cyan-400/90" />
             </ArchNode>
-            <ArchNode title="Mobile App">
-              <CiMobile1 className="size-6" />
-            </ArchNode>
-            <ArchNode title="Admin">
-              <RiAdminLine className="size-6" />
-            </ArchNode>
-          </SectionBox>
 
-          <ConnectionLines />
+            <ArchNode title="Mobile App" subtitle="iOS & Android">
+              <CiMobile1 size={40} className="text-neutral-300/90" />
+            </ArchNode>
 
-          {/* LEVEL 2: API GATEWAY */}
-          <SectionBox title="Entry Point">
-            <ArchNode
-              title="API Gateway"
-              className="size-32 border-blue-500/10 bg-gradient-to-br from-blue-500/5 to-transparent"
-            >
-              <ApiGatewayLogo className="size-14 opacity-80" />
+            <ArchNode title="Admin Dashboard" subtitle="Control Panel">
+              <RiAdminLine size={36} className="text-amber-400/90" />
             </ArchNode>
-          </SectionBox>
+          </StageColumn>
 
-          <ConnectionLines />
+          <ConnectionLines pulseColor="stroke-blue-500/40" />
 
-          {/* LEVEL 3: MICROSERVICES */}
-          <SectionBox title="Service Mesh" className="gap-4">
-            <ArchNode title="Auth Service" className="py-2">
-              <TbAuth2Fa className="size-6" />
+          {/* STAGE 2: ENTRY POINT / GATEWAY */}
+          <StageColumn title="Entry Gateway">
+            <ArchNode title="API Gateway" subtitle="Reverse Proxy & Rate Limit">
+              <ApiGatewayLogo className="size-12 opacity-90" />
             </ArchNode>
-            <ArchNode title="User Service" className="py-2">
-              <FaUserAlt className="size-5" />
-            </ArchNode>
-            <ArchNode title="Payment Service" className="py-2">
-              <PaymentLogo className="size-7" />
-            </ArchNode>
-            <ArchNode title="Order Service" className="py-2">
-              <OrderLogo className="size-7" />
-            </ArchNode>
-            <ArchNode title="Notification" className="py-2">
-              <NotificationLogo className="size-7" />
-            </ArchNode>
-          </SectionBox>
 
-          <ConnectionLines />
+            <ArchNode title="Auth Service" subtitle="OAuth 2.0 & JWT">
+              <TbAuth2Fa size={38} className="text-purple-400/90" />
+            </ArchNode>
+          </StageColumn>
 
-          {/* LEVEL 4: DATA & INFRA */}
-          <SectionBox title="Data & Infra" className="gap-5">
-            <div className="flex flex-col gap-4">
-              <ArchNode title="Primary DB">
-                <PostgresLogo className="size-8" />
-              </ArchNode>
-              <ArchNode title="Cache">
-                <RedisLogo className="size-8" />
-              </ArchNode>
-              <ArchNode title="Event Bus">
-                <KafkaLogo className="size-8" />
-              </ArchNode>
-            </div>
-          </SectionBox>
+          <ConnectionLines pulseColor="stroke-purple-500/40" />
+
+          {/* STAGE 3: MICROSERVICES MESH */}
+          <StageColumn title="Service Mesh">
+            <ArchNode title="User Service" subtitle="Profile & Roles">
+              <FaUserAlt size={28} className="text-cyan-400/90" />
+            </ArchNode>
+
+            <ArchNode title="Order Service" subtitle="Order Lifecycle">
+              <OrderLogo className="size-9 opacity-90" />
+            </ArchNode>
+
+            <ArchNode title="Payment Service" subtitle="Transactions">
+              <PaymentLogo className="size-9 opacity-90" />
+            </ArchNode>
+
+            <ArchNode title="Notification" subtitle="Push & Email">
+              <NotificationLogo className="size-9 opacity-90" />
+            </ArchNode>
+          </StageColumn>
+
+          <ConnectionLines pulseColor="stroke-emerald-500/40" />
+
+          {/* STAGE 4: DATA & INFRA PIPELINE */}
+          <StageColumn title="Data & Infra">
+            <ArchNode title="Primary DB" subtitle="PostgreSQL ACID">
+              <PostgresLogo className="size-10 opacity-90" />
+            </ArchNode>
+
+            <ArchNode title="In-Memory Cache" subtitle="Redis Sessions">
+              <RedisLogo className="size-10 opacity-90" />
+            </ArchNode>
+
+            <ArchNode title="Event Bus" subtitle="Kafka Streaming">
+              <KafkaLogo className="size-10 opacity-90" />
+            </ArchNode>
+          </StageColumn>
         </motion.div>
       </div>
     </div>
   );
 }
 
-function ConnectionLines() {
+// --- Connection Lines ---
+
+function ConnectionLines({ pulseColor = 'stroke-blue-500/40' }: { pulseColor?: string }) {
   return (
     <motion.div
       variants={itemVariants}
-      className="relative flex h-64 w-24 min-w-24 items-center justify-center"
+      className="relative flex h-64 w-20 min-w-20 items-center justify-center overflow-visible"
     >
       <svg
         className="absolute h-full w-full overflow-visible"
@@ -214,69 +223,42 @@ function ConnectionLines() {
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
       >
-        <defs>
-          <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-            <feGaussianBlur stdDeviation="2.5" result="blur" />
-
-            <feComposite in="SourceGraphic" in2="blur" operator="over" />
-          </filter>
-        </defs>
-
-        {/* Static Background Paths (The "Wires") */}
-
-        <g className="stroke-neutral-200 dark:stroke-neutral-800" strokeWidth="1.5">
+        {/* Track Wires */}
+        <g className="stroke-neutral-800/60" strokeWidth="1.5">
           <path d="M 0 20 H 30 Q 40 20 40 30 V 40 Q 40 50 50 50 H 100" />
-
           <path d="M 0 50 H 100" />
-
           <path d="M 0 80 H 30 Q 40 80 40 70 V 60 Q 40 50 50 50 H 100" />
         </g>
 
-        {/* Animated Beams (Left to Right Flow) */}
-
-        <g
-          className="stroke-red-500 dark:stroke-orange-400/30"
-          strokeWidth="2"
-          strokeLinecap="round"
-          filter="url(#glow)"
-        >
-          {/* Top Beam */}
-
+        {/* Energy Beams */}
+        <g className={pulseColor} strokeWidth="2.5" strokeLinecap="round">
           <motion.path
             d="M 0 20 H 30 Q 40 20 40 30 V 40 Q 40 50 50 50 H 100"
-            strokeDasharray="20 100" // Length of the pulse and the gap
-            animate={{ strokeDashoffset: [120, -120] }} // Pulls the dash from left to right
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 0.5 }}
+            strokeDasharray="25 75"
+            animate={{ strokeDashoffset: [105, -105] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: 'linear', delay: 0.2 }}
           />
-
-          {/* Middle Beam */}
 
           <motion.path
             d="M 0 50 H 100"
-            strokeDasharray="30 100"
-            animate={{ strokeDashoffset: [130, -130] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 0.9 }}
+            strokeDasharray="35 75"
+            animate={{ strokeDashoffset: [115, -115] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: 'linear', delay: 0.5 }}
           />
-
-          {/* Bottom Beam */}
 
           <motion.path
             d="M 0 80 H 30 Q 40 80 40 70 V 60 Q 40 50 50 50 H 100"
-            strokeDasharray="20 100"
-            animate={{ strokeDashoffset: [120, -120] }}
-            transition={{ duration: 3, repeat: Infinity, ease: 'linear', delay: 0.5 }}
+            strokeDasharray="25 75"
+            animate={{ strokeDashoffset: [105, -105] }}
+            transition={{ duration: 2.6, repeat: Infinity, ease: 'linear', delay: 0.35 }}
           />
         </g>
 
         {/* Anchor Dots */}
-
-        <circle cx="0" cy="20" r="2" className="fill-neutral-300 dark:fill-neutral-600" />
-
-        <circle cx="0" cy="50" r="2" className="fill-neutral-300 dark:fill-neutral-600" />
-
-        <circle cx="0" cy="80" r="2" className="fill-neutral-300 dark:fill-neutral-600" />
-
-        <circle cx="100" cy="50" r="2.5" className="animate-pulse fill-blue-500" />
+        <circle cx="0" cy="20" r="2" className="fill-neutral-700" />
+        <circle cx="0" cy="50" r="2" className="fill-neutral-700" />
+        <circle cx="0" cy="80" r="2" className="fill-neutral-700" />
+        <circle cx="100" cy="50" r="2.5" className="fill-neutral-400" />
       </svg>
     </motion.div>
   );
