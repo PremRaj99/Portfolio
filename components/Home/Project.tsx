@@ -19,9 +19,9 @@ export default function Project() {
   const projects: ProjectItem[] = [
     {
       id: 'physiobuddies',
-      title: 'PhysioBuddies Healthcare',
+      title: 'PhysioBuddies',
       description:
-        'A comprehensive healthcare platform designed for physiotherapy appointment booking, patient recovery tracking, and interactive rehabilitation management.',
+        'Healthcare platform for physiotherapy booking, patient recovery tracking, and rehabilitation management.',
       image: '/projects/physiobuddies.png',
       github: 'https://github.com/PremRaj99/physiobuddies-frontend',
       demo: 'https://physiobuddies-frontend.vercel.app',
@@ -32,7 +32,7 @@ export default function Project() {
       id: 'chess',
       title: 'Real-Time Multiplayer Chess',
       description:
-        'Full-stack multiplayer chess platform featuring real-time WebSocket move validation, clock timers, and instant room matchmaking.',
+        'Full-stack chess platform with real-time WebSocket move validation, clock timers, and matchmaking.',
       image: '/projects/chess.png',
       github: 'https://github.com/PremRaj99/chess-fronend',
       demo: 'https://chess.premraj.online',
@@ -41,9 +41,9 @@ export default function Project() {
     },
     {
       id: 'videocall',
-      title: 'WebRTC Video Call & Chat',
+      title: 'WebRTC Video & Anonymous Chat',
       description:
-        'High-concurrency video conferencing and anonymous messaging engine powered by WebRTC signaling servers and Socket.io.',
+        'High-concurrency video conferencing and anonymous chat engine powered by WebRTC and Socket.io.',
       image: '/projects/videocall.png',
       github: 'https://github.com/PremRaj99/Web-RTC-Video-Call',
       demo: 'https://video.premraj.online',
@@ -54,7 +54,7 @@ export default function Project() {
       id: 'yogalife',
       title: 'YogaLife Kolkata',
       description:
-        'Digital web portal for YogaLife Kolkata studio featuring class schedules, instructor profiles, wellness blogs, and online session booking.',
+        'Digital web portal for YogaLife Kolkata studio featuring class schedules, instructor profiles, and online booking.',
       image: '/projects/yogalife.png',
       github: 'https://github.com/PremRaj99/Yogalife-Kolkata',
       demo: 'https://www.yogalifekolkata.com/',
@@ -65,7 +65,7 @@ export default function Project() {
       id: 'statai',
       title: 'AI Music & Mood Classifier',
       description:
-        'Machine learning audio classification engine analyzing musical frequency spectrums to categorize mood & genre in real-time.',
+        'Machine learning audio classification engine analyzing frequency spectrums to categorize mood and genre.',
       image:
         'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80',
       github: 'https://github.com/PremRaj99/AI-Music-Mood-Classification',
@@ -87,7 +87,7 @@ export default function Project() {
       id: 'cyberhunter',
       title: 'Cyber Hunter Platform',
       description:
-        'Official member registration, event management, and team tracking portal built for the Cyber Hunter cybersecurity club.',
+        'Member registration, event management, and team tracking portal built for the Cyber Hunter club.',
       image:
         'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80',
       github: 'https://github.com/PremRaj99/Cyber-Hunter-Club-Registration',
@@ -99,7 +99,7 @@ export default function Project() {
       id: 'emerginet',
       title: 'EmergiNet Emergency Services',
       description:
-        'Location-based emergency road assistance web app connecting stranded drivers with nearby towing and repair services in real-time.',
+        'Location-based road emergency app connecting stranded drivers with nearby towing and repair services.',
       image:
         'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
       github: 'https://github.com/PremRaj99/EmergiNet-Frontend',
