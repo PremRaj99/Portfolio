@@ -178,39 +178,40 @@ export default function ModernJourneyTimeline() {
   const journeyData = [
     {
       id: 1,
-      chapter: 'Learned core web fundamentals',
-      subtitle: 'Built static + interactive UIs with real constraints.',
-      year: 'Foundation',
-      skills: ['HTML', 'CSS', 'JavaScript Basics'],
+      chapter: 'Full-Stack Foundation',
+      subtitle:
+        'Mastered modern UI/UX design, interactive frontend engineering, and responsive layouts.',
+      year: 'Phase 1',
+      skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     },
     {
       id: 2,
-      chapter: 'Moved into React + Node.js',
-      subtitle: 'Designed APIs, auth systems, payment flows.',
-      year: 'Full-Stack Shift',
-      skills: ['React.js', 'Node.js', 'Express.js', 'MongoDB', 'RESTful APIs'],
-      projects: ['Cyber Hunter Team Management', 'Emerginet Road Emergency Service'],
+      chapter: 'Backend Architecture & Payments',
+      subtitle: 'Engineered secure REST APIs, authentication, and multi-gateway payment flows.',
+      year: 'Phase 2',
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Stripe API'],
+      integrations: ['Razorpay', 'PhonePe', 'Cashfree', 'UPI Tranzact', 'Google Cloud AI'],
     },
     {
       id: 3,
-      chapter: 'Built production-grade apps',
-      subtitle: 'Integrated maps, payments, real-time updates, AWS deployment.',
-      year: 'Real-World Projects',
-      skills: ['AWS EC2', 'S3', 'VPC', 'Elastic IP', 'Route 53', 'Cloud Architecture'],
-      integrations: ['OLAMAP', 'Google Maps', 'Razorpay', 'Cashfree', 'PhonePe', 'UPI Tranzact'],
+      chapter: 'Custom AI SaaS & Automation',
+      subtitle: 'Architected machine learning classification models and subscription SaaS tools.',
+      year: 'Phase 3',
+      skills: ['Python ML', 'AI API Integration', 'AWS EC2', 'S3', 'Docker', 'Vercel'],
+      projects: ['AI Mood & Music Classification Engine', 'PhysioBuddies Multi-tenant B2B SaaS'],
     },
     {
       id: 4,
-      chapter: 'Freelancing + building scalable systems',
+      chapter: 'E-Commerce & Commercial Solutions',
       subtitle: (
-        <span className="text-green-500">
-          Actively seeking internship / junior full-stack roles.
+        <span className="font-semibold text-emerald-400">
+          Available for custom AI SaaS & E-Commerce development projects.
         </span>
       ),
-      year: 'Now',
+      year: 'Current Focus',
       projects: [
-        'Physiobuddies: A platform for physiotherapy management',
-        "Busan Official Website: India's Trusted Gaming Top-Up Hub",
+        'YogaLife Kolkata E-Commerce & Booking Platform',
+        'Busan Gaming Storefront: High-converting Digital Top-Up Hub',
       ],
     },
   ];
@@ -242,49 +243,60 @@ export default function ModernJourneyTimeline() {
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* Header */}
         <AnimatedDiv className="mb-12 text-center" delay={0} direction="up">
-          <h1 className="mb-3 text-2xl font-bold text-white sm:text-3xl md:text-4xl">
-            From Learning Code to Shipping Real Systems
-          </h1>
-          <p className="text-base text-gray-400">
-            From curiosity to expertise - a story of continuous growth
+          <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
+            Engineering Journey
+          </span>
+          <h2 className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
+            From Fundamentals to Shipping Systems
+          </h2>
+          <p className="mx-auto mt-2 max-w-xl text-sm text-neutral-400">
+            A continuous progression of building, learning, and architecting real-world
+            applications.
           </p>
         </AnimatedDiv>
 
         {/* Timeline Container */}
         <div className="relative">
           {/* Timeline Items */}
-          <div className="grid gap-8 md:grid-cols-2">
+          <div className="grid gap-6 md:grid-cols-2">
             {journeyData.map((item, index) => {
               return (
                 <div
                   key={item.id}
-                  className={`transform cursor-pointer rounded-xl border border-white/10 bg-white/10 p-4 shadow-lg backdrop-blur-sm transition-all duration-500 hover:scale-101 hover:bg-white/15 sm:p-6 ${
-                    activeChapter === index ? 'scale-105 bg-white/15' : ''
+                  className={`rounded-2xl border border-white/10 bg-neutral-900/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-orange-500/30 hover:bg-neutral-900/80 ${
+                    activeChapter === index ? 'border-orange-500/40 bg-neutral-900/80' : ''
                   }`}
                   onMouseEnter={() => setActiveChapter(index)}
                   onMouseLeave={() => setActiveChapter(null)}
                 >
                   {/* Chapter Header */}
                   <div className="mb-4">
-                    <div className="mb-2 flex items-center gap-3">
-                      <span className="rounded-full border border-white/10 bg-white/10 px-2 py-1 text-xs font-medium text-gray-300">
+                    <div className="mb-2 flex items-center justify-between">
+                      <span className="rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-0.5 font-mono text-xs font-semibold text-orange-400">
                         {item.year}
                       </span>
+                      <span className="font-mono text-xs text-neutral-500">0{index + 1}</span>
                     </div>
-                    <h3 className="mb-1 flex items-center gap-1 text-lg font-bold text-white sm:text-xl">
-                      <Image src={Show_Feast} className="h-8 w-8" alt="" />
-                      {item.chapter}
+                    <h3 className="mb-1.5 flex items-center gap-2 text-lg font-bold text-white">
+                      <Image
+                        src={Show_Feast}
+                        className="h-6 w-6 rounded-full border border-white/10 object-cover"
+                        alt="Signature Element"
+                      />
+                      <span>{item.chapter}</span>
                     </h3>
-                    <p className="text-sm text-gray-400 italic">&quot;{item.subtitle}&quot;</p>
+                    <p className="text-xs leading-relaxed text-neutral-400 italic">
+                      {item.subtitle}
+                    </p>
                   </div>
 
                   {/* Skills */}
                   {item.skills && (
-                    <div className="mb-3">
-                      <h4 className="mb-2 text-xs font-semibold text-gray-400">
-                        Technologies & Skills
+                    <div className="mb-4">
+                      <h4 className="mb-2 font-mono text-[11px] tracking-wider text-neutral-400 uppercase">
+                        Technologies & Stack
                       </h4>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
+                      <div className="flex flex-wrap gap-1.5">
                         {item.skills.map((skill, skillIndex) => (
                           <SkillBadge
                             key={skillIndex}
@@ -299,15 +311,18 @@ export default function ModernJourneyTimeline() {
 
                   {/* Projects */}
                   {item.projects && (
-                    <div className="mb-3">
-                      <h4 className="mb-2 text-xs font-semibold text-gray-400">Key Projects</h4>
+                    <div className="mb-4">
+                      <h4 className="mb-2 font-mono text-[11px] tracking-wider text-neutral-400 uppercase">
+                        Key Achievements
+                      </h4>
                       <ul className="space-y-1">
                         {item.projects.map((project, projIndex) => (
                           <li
                             key={projIndex}
-                            className="text-xs text-gray-300 transition-all duration-300 hover:text-white"
+                            className="flex items-start gap-1.5 text-xs text-neutral-300"
                           >
-                            • {project}
+                            <span className="font-bold text-orange-400">•</span>
+                            <span>{project}</span>
                           </li>
                         ))}
                       </ul>
@@ -317,12 +332,14 @@ export default function ModernJourneyTimeline() {
                   {/* Integrations */}
                   {item.integrations && (
                     <div>
-                      <h4 className="mb-2 text-xs font-semibold text-gray-400">Integrations</h4>
-                      <div className="flex flex-wrap gap-1 sm:gap-2">
+                      <h4 className="mb-2 font-mono text-[11px] tracking-wider text-neutral-400 uppercase">
+                        Integrations
+                      </h4>
+                      <div className="flex flex-wrap gap-1.5">
                         {item.integrations.map((integration, intIndex) => (
                           <span
                             key={intIndex}
-                            className="rounded border border-white/10 bg-white/5 px-2 py-1 text-xs text-gray-400 transition-all duration-300 hover:bg-white/10"
+                            className="rounded-md border border-neutral-800 bg-neutral-950/80 px-2 py-0.5 font-mono text-[10px] text-neutral-300"
                           >
                             {integration}
                           </span>

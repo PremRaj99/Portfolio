@@ -9,45 +9,56 @@ import Image from 'next/image';
 
 export default function Contact() {
   return (
-    <Card className={'my-8 flex min-h-fit w-full flex-col justify-center gap-4 border md:flex-row'}>
-      <div className="flex justify-between md:items-center">
-        <Image src={Idea_Mind} alt="" className="w-96" />
+    <Card className="flex flex-col items-center gap-8 border border-white/10 p-6 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+      <div className="flex w-full justify-center lg:w-5/12">
+        <Image
+          src={Idea_Mind}
+          alt="Let's build something great"
+          className="w-full max-w-sm rounded-2xl object-cover"
+        />
       </div>
-      <div className="">
-        <h1 className="mt-8 max-w-[30ch] text-3xl font-semibold md:text-3xl">
-          I don&apos;t just build websites — I craft complete solutions for your business.
-        </h1>
-        <p className="my-4 max-w-[60ch] text-gray-400">
-          Upgrade your online presence with robust, scalable, and user-focused web applications.
-          Whether it&apos;s boosting performance, enhancing user experience, or increasing
-          conversions — we&apos;ll build a digital solution tailored to your needs, not just a
-          pretty interface.
+
+      <div className="flex w-full flex-col items-start lg:w-7/12">
+        <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
+          Build Your Product
+        </span>
+
+        <h2 className="mt-2 text-2xl leading-tight font-extrabold text-white sm:text-3xl lg:text-4xl">
+          Want a custom AI SaaS platform or high-converting E-Commerce site?
+        </h2>
+
+        <p className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-300 sm:text-base">
+          From concept and UI/UX design to AI integration, payment gateways (Stripe, Razorpay),
+          subscription billing, and cloud deployment — I turn your project ideas into
+          revenue-generating software.
         </p>
-        <div className="flex gap-2 py-4">
-          <div
-            onClick={() => {
-              window.open('https://github.com/PremRaj99');
-            }}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/10 transition-colors duration-300 hover:bg-white/5"
+
+        <div className="mt-6 flex flex-wrap items-center gap-3">
+          <a
+            href="https://github.com/PremRaj99"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="GitHub Profile"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-white/20 hover:bg-white/10"
           >
-            <FiGithub className="text-xl text-white" />
-          </div>
-          <div
-            onClick={() => {
-              window.open('https://www.linkedin.com/in/prem-raj99');
-            }}
-            className="flex h-10 w-10 cursor-pointer items-center justify-center rounded-xl border border-white/10 transition-colors duration-300 hover:bg-white/5"
+            <FiGithub className="text-lg text-white" />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/prem-raj99"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="LinkedIn Profile"
+            className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 transition-all duration-300 hover:border-white/20 hover:bg-white/10"
           >
-            <FaLinkedinIn className="text-xl text-white" />
-          </div>
+            <FaLinkedinIn className="text-lg text-white" />
+          </a>
 
           <Button
             onClick={() => {
-              window.open('https://wa.me/916200103129');
+              window.open('https://wa.me/916200103129', '_blank');
             }}
           >
-            {' '}
-            Contact me{' '}
+            Get Your Site Built
           </Button>
         </div>
       </div>

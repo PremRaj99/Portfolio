@@ -141,7 +141,7 @@ export default function BackendArchitecture() {
           {/* STAGE 1: CLIENT LAYER */}
           <StageColumn title="Client Layer">
             <ArchNode title="Web App" subtitle="React & Next.js">
-              <FaLaptopCode size={38} className="text-cyan-400/90" />
+              <FaLaptopCode size={38} className="text-orange-400/90" />
             </ArchNode>
 
             <ArchNode title="Mobile App" subtitle="iOS & Android">

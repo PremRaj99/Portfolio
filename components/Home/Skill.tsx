@@ -4,6 +4,8 @@ import type { HTMLAttributes, ReactNode, RefObject } from 'react';
 import { useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IoClose, IoExpandOutline } from 'react-icons/io5';
+import Image from 'next/image';
+import Show_Yo from '@/public/images/Show_Yo.png';
 
 import BackendArchitecture from '../illustration/backend-architecture';
 import FrontendIllustration from '../illustration/responsive';
@@ -218,9 +220,25 @@ export default function ModernSkills() {
 
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* Header */}
-        <AnimatedDiv className="mb-12 text-center" delay={0} direction="up">
-          <h1 className="mb-4 text-4xl font-bold text-white md:text-5xl">Technical Skills</h1>
-          <p className="mb-8 text-gray-400">
+        <AnimatedDiv
+          className="mb-12 flex flex-col items-center text-center"
+          delay={0}
+          direction="up"
+        >
+          <div className="mb-2 flex items-center gap-2">
+            <Image
+              src={Show_Yo}
+              alt="Signature Element"
+              className="h-7 w-7 rounded-full border border-white/10 object-cover"
+            />
+            <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
+              Architecture & Stack
+            </span>
+          </div>
+          <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+            Technical Skills
+          </h2>
+          <p className="mt-3 text-sm text-neutral-400">
             Click on any architecture illustration to view it in full screen
           </p>
         </AnimatedDiv>

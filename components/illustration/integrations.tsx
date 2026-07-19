@@ -133,7 +133,7 @@ export default function IntegrationsIllustration() {
           <MeshNode title={nodes.frontend.title} subtitle={nodes.frontend.sub}>
             <div className="flex items-center gap-2">
               <SiNextdotjs size={36} className="text-white" />
-              <FaReact size={40} className="text-cyan-400/90" />
+              <FaReact size={40} className="text-orange-400/90" />
             </div>
           </MeshNode>
         </div>

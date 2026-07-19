@@ -108,7 +108,7 @@ export default function DataAndPerformance() {
             </BoldItem>
 
             <BoldItem title="High Performance" subtitle="Smooth User Experience" isFast>
-              <FaRocket size={40} className="text-cyan-400/90" />
+              <FaRocket size={40} className="text-orange-400/90" />
             </BoldItem>
           </div>
 

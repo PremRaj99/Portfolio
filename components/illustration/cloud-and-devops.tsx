@@ -148,7 +148,7 @@ export default function CloudAndDevOps() {
           {/* STAGE 2: CI/CD PIPELINE */}
           <StageColumn title="CI/CD Engine">
             <BoldNode title="Docker" subtitle="OCI Image Build">
-              <FaDocker size={44} className="text-cyan-400/90" />
+              <FaDocker size={44} className="text-orange-400/90" />
             </BoldNode>
 
             <BoldNode title="Automated Test" subtitle="148/148 Passed">
