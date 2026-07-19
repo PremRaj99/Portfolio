@@ -9,7 +9,7 @@ A production-ready, ultra-responsive, and modern developer portfolio built with 
 - **⚡ Hero Section**: Sales-focused headline, real-time availability status badge, and quick action links to GitHub, LinkedIn, and direct WhatsApp consultations.
 - **🗺️ Engineering Journey Timeline**: Interactive phase-by-phase timeline showcasing full-stack growth from UI/UX design to multi-tenant SaaS architecture, cloud DevOps, and payment gateways.
 - **💼 Featured Work Showcase**: Highlighting production-grade applications with live demos, source code repositories, and interactive preview cards:
-  1. **PhysioBuddies B2B Healthcare SaaS**: Multi-tenant healthcare booking, patient tracking, and practitioner analytics.
+  1. **PhysioBuddies B2C Healthcare SaaS**: Multi-tenant healthcare booking, patient tracking, and practitioner analytics.
   2. **Real-Time Multiplayer Chess Platform**: Full-stack WebSocket game engine with live move validation, timers, and rating systems.
   3. **YogaLife Kolkata E-Commerce & Booking**: Studio storefront with class scheduling, booking portals, and online payment processing.
 - **🧪 More Projects & Labs**:

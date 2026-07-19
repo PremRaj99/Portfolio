@@ -20,13 +20,13 @@ type ProjectItem = {
 const projects: ProjectItem[] = [
   {
     id: 'physiobuddies',
-    title: 'PhysioBuddies B2B Healthcare SaaS',
+    title: 'PhysioBuddies B2C Healthcare SaaS',
     description:
-      'Multi-tenant healthcare B2B SaaS platform built with the MERN stack (MongoDB, Express, React, Node.js) & TypeScript. Features online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
+      'Multi-tenant healthcare B2C SaaS platform built with the MERN stack (MongoDB, Express, React, Node.js) & TypeScript. Features online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
     image: '/projects/physiobuddies.png',
     github: 'https://github.com/PremRaj99/physiobuddies-frontend',
     demo: 'https://physiobuddies-frontend.vercel.app',
-    tags: ['MERN Stack', 'TypeScript', 'B2B SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
+    tags: ['MERN Stack', 'TypeScript', 'B2C SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
     featured: true,
   },
   {
