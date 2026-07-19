@@ -22,25 +22,26 @@ export default function Hero() {
         <div>
           {/* Top Header Row */}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            {/* Profile Avatar & Title */}
+            {/* Profile Avatar & Name */}
             <div className="flex items-center gap-3">
               <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-orange-500/30 p-0.5 shadow-md shadow-orange-500/10 sm:h-12 sm:w-12">
                 <Image
                   src={Show_Yo}
-                  alt="Prem Raj Avatar"
+                  alt="Prem Raj - Full Stack Developer & AI SaaS Architect"
                   className="h-full w-full rounded-full object-cover"
-                  loading="lazy"
+                  priority
+                  sizes="(max-width: 640px) 40px, 48px"
                 />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-1.5">
-                  <h2 className="text-base font-bold text-white sm:text-lg">Prem Raj</h2>
+                  <span className="text-base font-bold text-white sm:text-lg">Prem Raj</span>
                   <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-semibold text-emerald-400">
                     Online
                   </span>
                 </div>
                 <span className="font-mono text-xs font-semibold text-orange-400">
-                  AI SaaS & E-Commerce Architect
+                  Full Stack & AI SaaS Architect
                 </span>
               </div>
             </div>
@@ -76,9 +77,12 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Core Sales Headline */}
+          {/* Primary Semantic H1 Headline */}
           <h1 className="mt-6 text-xl leading-tight font-extrabold text-white sm:mt-8 sm:text-3xl lg:text-4xl">
-            I build production-ready{' '}
+            <span className="mb-1 block font-mono text-xs font-bold tracking-wider text-orange-400 uppercase sm:text-sm">
+              Prem Raj | Full Stack Developer & AI SaaS Architect
+            </span>
+            Building production-ready{' '}
             <span className="text-orange-400 underline decoration-orange-500/40 underline-offset-4">
               AI SaaS
             </span>{' '}
@@ -86,14 +90,15 @@ export default function Hero() {
             <span className="text-orange-400 underline decoration-orange-500/40 underline-offset-4">
               E-Commerce
             </span>{' '}
-            stores.
+            systems.
           </h1>
 
-          {/* Value Proposition Description */}
+          {/* Value Proposition & Strategic Keywords Description */}
           <p className="mt-3 max-w-2xl text-xs leading-relaxed text-neutral-300 sm:mt-4 sm:text-sm lg:text-base">
-            Helping startups, business owners, and founders turn ideas into scalable digital
-            products. Specialized in custom AI workflows, payment-integrated online stores (Stripe &
-            Razorpay), subscription billing, and sub-second web applications.
+            Full Stack Engineer specializing in the MERN stack, Next.js, React, TypeScript, and
+            microservices architectures. Helping startups, founders, and businesses engineer custom
+            AI workflows, payment-integrated online stores (Stripe & Razorpay), real-time WebRTC
+            platforms, and sub-second web applications.
           </p>
         </div>
 
@@ -109,18 +114,19 @@ export default function Hero() {
           </div>
           <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[10px] font-medium text-neutral-300 sm:text-[11px]">
             <FaShieldAlt className="text-xs text-cyan-400" />
-            <span>High Concurrency API</span>
+            <span>Microservices & APIs</span>
           </div>
         </div>
       </Card>
 
-      {/* Signature Image Showcase Card (Desktop Only) */}
+      {/* Signature Image Showcase Card */}
       <Card className="group relative col-span-12 hidden min-h-[280px] items-center justify-center overflow-hidden border border-white/10 p-0 sm:min-h-[320px] md:col-span-4 md:flex">
         <Image
           src={Say_Hi}
-          alt="Prem Raj Portrait"
+          alt="Prem Raj - Full Stack Developer Portrait"
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          loading="lazy"
+          priority
+          sizes="(max-width: 768px) 100vw, 33vw"
         />
 
         {/* Subtle Ambient Overlay Gradient */}
@@ -132,7 +138,7 @@ export default function Hero() {
             <span className="font-mono text-[10px] font-bold tracking-wider text-orange-400 uppercase">
               Prem Raj Studio
             </span>
-            <span className="text-xs font-semibold text-white">Full-Stack & AI Systems</span>
+            <span className="text-xs font-semibold text-white">Full-Stack & Microservices</span>
           </div>
           <span className="flex h-2 w-2 animate-pulse rounded-full bg-orange-500" />
         </div>

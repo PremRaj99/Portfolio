@@ -24,13 +24,14 @@ export default function Contact() {
         </span>
 
         <h2 className="mt-2 text-xl leading-tight font-extrabold text-white sm:text-3xl lg:text-4xl">
-          Want a custom AI SaaS platform or high-converting E-Commerce site?
+          Get in Touch & Build Your Custom AI SaaS or E-Commerce Platform
         </h2>
 
         <p className="mt-3 max-w-xl text-xs leading-relaxed text-neutral-300 sm:mt-4 sm:text-sm lg:text-base">
-          From concept and UI/UX design to AI integration, payment gateways (Stripe, Razorpay),
-          subscription billing, and cloud deployment — I turn your project ideas into
-          revenue-generating software.
+          Specialized in full-stack web development with Next.js, React, TypeScript, and MERN stack
+          microservices. From UI/UX design and AI API integration to secure payment gateways (Stripe
+          & Razorpay), subscription billing, and cloud deployment — let&apos;s turn your ideas into
+          high-performance software.
         </p>
 
         <div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-6">

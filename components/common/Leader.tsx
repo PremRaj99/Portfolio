@@ -247,11 +247,11 @@ export default function ModernJourneyTimeline() {
             Engineering Journey
           </span>
           <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
-            From Fundamentals to Shipping Systems
+            Engineering Journey & Experience
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-xs text-neutral-400 sm:text-sm">
-            A continuous progression of building, learning, and architecting real-world
-            applications.
+            Continuous technical progression: from MERN stack fundamentals to engineering AI SaaS,
+            microservices, and high-concurrency web systems.
           </p>
         </AnimatedDiv>
 

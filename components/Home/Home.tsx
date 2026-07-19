@@ -17,9 +17,11 @@ export default function Home() {
               src={Show_Feast}
               alt="Prem Raj Avatar"
               className="h-full w-full object-cover"
-              loading="lazy"
+              priority
+              sizes="(max-width: 640px) 36px, 40px"
             />
           </div>
+
           <div className="inline-flex items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-1 font-mono text-[11px] font-semibold text-emerald-400 backdrop-blur-md sm:text-xs">
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>

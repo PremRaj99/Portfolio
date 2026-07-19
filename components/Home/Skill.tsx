@@ -228,7 +228,7 @@ export default function ModernSkills() {
           <div className="mb-2 flex items-center gap-2">
             <Image
               src={Show_Yo}
-              alt="Signature Element"
+              alt="Prem Raj Architecture & Tech Stack"
               className="h-7 w-7 rounded-full border border-white/10 object-cover"
             />
             <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
@@ -236,7 +236,7 @@ export default function ModernSkills() {
             </span>
           </div>
           <h2 className="text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
-            Technical Skills
+            Technical Skills & Tech Stack
           </h2>
           <p className="mt-2 text-xs text-neutral-400 sm:text-sm">
             Click on any architecture illustration to view it in full screen
@@ -267,7 +267,7 @@ export default function ModernSkills() {
                   {role.screen}
                 </div>
 
-                <h2 className="mt-2 text-2xl font-bold">{role.title}</h2>
+                <h3 className="mt-2 text-2xl font-bold">{role.title}</h3>
                 <p className="mb-2 text-sm text-gray-400">{role.description}</p>
 
                 {/* Tech Stack Pills */}

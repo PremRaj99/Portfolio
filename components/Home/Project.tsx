@@ -22,40 +22,40 @@ const projects: ProjectItem[] = [
     id: 'physiobuddies',
     title: 'PhysioBuddies B2B Healthcare SaaS',
     description:
-      'Multi-tenant healthcare SaaS platform for online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
+      'Multi-tenant healthcare B2B SaaS platform built with the MERN stack (MongoDB, Express, React, Node.js) & TypeScript. Features online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
     image: '/projects/physiobuddies.png',
     github: 'https://github.com/PremRaj99/physiobuddies-frontend',
     demo: 'https://physiobuddies-frontend.vercel.app',
-    tags: ['B2B SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
+    tags: ['MERN Stack', 'TypeScript', 'B2B SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
     featured: true,
   },
   {
     id: 'chess',
     title: 'Real-Time Multiplayer Chess Platform',
     description:
-      'Full-stack interactive chess platform featuring real-time WebSocket move validation, match timers, and rating systems.',
+      'Full-stack interactive chess application featuring real-time WebSocket move validation, match timers, microservices architecture, and rating systems built with React, Node.js, and TypeScript.',
     image: '/projects/chess.png',
     github: 'https://github.com/PremRaj99/chess-fronend',
     demo: 'https://chess.premraj.online',
-    tags: ['React', 'WebSocket', 'Node.js', 'Tailwind'],
+    tags: ['React', 'WebSocket', 'Node.js', 'TypeScript', 'Tailwind CSS'],
     featured: true,
   },
   {
     id: 'yogalife',
     title: 'YogaLife Kolkata E-Commerce & Booking',
     description:
-      'High-converting studio storefront and booking portal with automated class schedules, instructor profiles, customer accounts, and online payment integrations.',
+      'High-converting studio storefront and booking portal engineered with Next.js, React, and Tailwind CSS. Integrated with automated class schedules, customer accounts, and secure online payment gateways.',
     image: '/projects/yogalife.png',
     github: 'https://github.com/PremRaj99/Yogalife-Kolkata',
     demo: 'https://www.yogalifekolkata.com/',
-    tags: ['E-Commerce', 'Next.js', 'React', 'Payment Gateway', 'Tailwind'],
+    tags: ['Next.js', 'React', 'E-Commerce', 'Payment Gateway', 'Tailwind CSS'],
     featured: true,
   },
   {
     id: 'statai',
     title: 'AI Music & Mood Classification SaaS',
     description:
-      'Production AI SaaS engine analyzing audio frequency spectrums with machine learning models for automated mood categorization, user dashboards, and API access.',
+      'Production AI SaaS engine built with Python machine learning models and a Next.js/TypeScript frontend. Analyzes audio frequency spectrums for automated mood categorization, user analytics dashboards, and REST API access.',
     image:
       'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80',
     github: 'https://github.com/PremRaj99/AI-Music-Mood-Classification',
@@ -66,46 +66,46 @@ const projects: ProjectItem[] = [
     id: 'videocall',
     title: 'WebRTC Video & Real-Time Chat Platform',
     description:
-      'High-concurrency video conferencing and anonymous real-time chat engine powered by WebRTC and Socket.io.',
+      'High-concurrency video conferencing and real-time chat engine powered by WebRTC, Socket.io, Node.js, and React microservices.',
     image: '/projects/videocall.png',
     github: 'https://github.com/PremRaj99/Web-RTC-Video-Call',
     demo: 'https://video.premraj.online',
-    tags: ['WebRTC', 'Socket.io', 'Node.js', 'React'],
+    tags: ['WebRTC', 'Socket.io', 'Node.js', 'React', 'Microservices'],
     featured: false,
   },
   {
     id: 'snake',
     title: 'Classic Arcade Canvas Game',
     description:
-      'Retro arcade Snake game built with HTML5 canvas, supporting responsive touch controls and high-score records.',
+      'Retro arcade Snake game built with React, Vite, and HTML5 canvas, supporting responsive touch controls and high-score persistence.',
     image: '/projects/snake.png',
     github: 'https://github.com/PremRaj99/snake-game',
     demo: 'https://snake.premraj.online',
-    tags: ['React', 'Vite', 'HTML5 Canvas'],
+    tags: ['React', 'Vite', 'TypeScript', 'HTML5 Canvas'],
     featured: false,
   },
   {
     id: 'emerginet',
-    title: 'EmergiNet Emergency Services Platform',
+    title: 'EmergiNet Emergency Dispatch Platform',
     description:
-      'Location-based emergency dispatch app connecting stranded drivers with nearby towing and repair services in real time.',
+      'Location-based emergency dispatch application connecting drivers with nearby towing and repair services in real time, built with MERN stack & REST APIs.',
     image:
       'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
     github: 'https://github.com/PremRaj99/EmergiNet-Frontend',
     demo: 'https://emergi-net-frontend.vercel.app',
-    tags: ['React', 'Node.js', 'Express', 'MongoDB'],
+    tags: ['MERN Stack', 'React', 'Node.js', 'Express', 'MongoDB'],
     featured: false,
   },
   {
     id: 'cyberhunter',
     title: 'Cyber Hunter Portal & Registration System',
     description:
-      'Member registration portal, team tracking, and event management dashboard built for club administration.',
+      'Member registration portal, team tracking, and event management dashboard built for club administration using React and Node.js.',
     image:
       'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80',
     github: 'https://github.com/PremRaj99/Cyber-Hunter-Club-Registration',
     demo: 'https://cyber-hunter-club-registration.vercel.app',
-    tags: ['React', 'Node.js', 'Vercel'],
+    tags: ['React', 'Node.js', 'Vercel', 'Tailwind CSS'],
     featured: false,
   },
 ];
@@ -118,7 +118,7 @@ export default function Project() {
 
   return (
     <div className="relative overflow-hidden">
-      {/* Header */}
+      {/* Section Header */}
       <div className="mb-10 flex flex-col items-center text-center sm:mb-16">
         <div className="mb-2 flex items-center gap-2">
           <Image
@@ -127,14 +127,15 @@ export default function Project() {
             className="h-7 w-7 rounded-full border border-white/10 object-cover"
           />
           <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
-            Portfolio & Products
+            Portfolio & Case Studies
           </span>
         </div>
         <h2 className="text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
-          Featured Work
+          Featured Projects & Work
         </h2>
         <p className="mx-auto mt-2 max-w-2xl text-xs text-neutral-400 sm:mt-3 sm:text-base">
-          Live applications, WebRTC platforms, and full-stack interactive software I have built.
+          Production applications, AI SaaS platforms, WebRTC systems, and full-stack software built
+          with Next.js, React, and Microservices.
         </p>
       </div>
 
@@ -159,11 +160,10 @@ export default function Project() {
                 <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/60 shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500 group-hover:border-orange-500/40 group-hover:shadow-[0_0_40px_rgba(249,115,22,0.25)]">
                   <Image
                     src={project.image}
-                    alt={project.title}
+                    alt={`${project.title} - Prem Raj Portfolio`}
                     fill
                     className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
-                    loading="lazy"
-                    unoptimized
+                    sizes="(max-width: 1024px) 100vw, 60vw"
                   />
 
                   {/* Browser Window Control Accent */}
@@ -256,7 +256,7 @@ export default function Project() {
             transition={{ duration: 0.4 }}
           >
             <h3 className="mb-6 text-center text-xl font-extrabold text-white sm:mb-8 sm:text-2xl">
-              More Projects & Labs
+              More Projects & Software Labs
             </h3>
 
             <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
@@ -271,11 +271,10 @@ export default function Project() {
                   <div className="relative aspect-video w-full overflow-hidden bg-black">
                     <Image
                       src={project.image}
-                      alt={project.title}
+                      alt={`${project.title} - Prem Raj`}
                       fill
                       className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
-                      loading="lazy"
-                      unoptimized
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80" />
                   </div>
