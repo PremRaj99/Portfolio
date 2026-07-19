@@ -9,7 +9,7 @@ import Image from 'next/image';
 
 export default function Contact() {
   return (
-    <Card className="flex flex-col items-center gap-8 border border-white/10 p-6 sm:p-10 lg:flex-row lg:items-center lg:justify-between">
+    <Card className="flex flex-col items-center gap-6 border border-white/10 p-5 sm:gap-8 sm:p-8 lg:flex-row lg:items-center lg:justify-between lg:gap-10 lg:p-10">
       <div className="flex w-full justify-center lg:w-5/12">
         <Image
           src={Idea_Mind}
@@ -23,17 +23,17 @@ export default function Contact() {
           Build Your Product
         </span>
 
-        <h2 className="mt-2 text-2xl leading-tight font-extrabold text-white sm:text-3xl lg:text-4xl">
+        <h2 className="mt-2 text-xl leading-tight font-extrabold text-white sm:text-3xl lg:text-4xl">
           Want a custom AI SaaS platform or high-converting E-Commerce site?
         </h2>
 
-        <p className="mt-4 max-w-xl text-sm leading-relaxed text-neutral-300 sm:text-base">
+        <p className="mt-3 max-w-xl text-xs leading-relaxed text-neutral-300 sm:mt-4 sm:text-sm lg:text-base">
           From concept and UI/UX design to AI integration, payment gateways (Stripe, Razorpay),
           subscription billing, and cloud deployment — I turn your project ideas into
           revenue-generating software.
         </p>
 
-        <div className="mt-6 flex flex-wrap items-center gap-3">
+        <div className="mt-5 flex flex-wrap items-center gap-3 sm:mt-6">
           <a
             href="https://github.com/PremRaj99"
             target="_blank"

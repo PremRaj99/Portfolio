@@ -117,9 +117,9 @@ export default function Project() {
   const secondaryProjects = projects.filter((p) => !p.featured);
 
   return (
-    <div className="my-16 overflow-hidden px-4 sm:px-8">
+    <div className="relative overflow-hidden">
       {/* Header */}
-      <div className="mb-16 flex flex-col items-center text-center">
+      <div className="mb-10 flex flex-col items-center text-center sm:mb-16">
         <div className="mb-2 flex items-center gap-2">
           <Image
             src={Show_Feast}
@@ -130,16 +130,16 @@ export default function Project() {
             Portfolio & Products
           </span>
         </div>
-        <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+        <h2 className="text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
           Featured Work
         </h2>
-        <p className="mx-auto mt-3 max-w-2xl text-sm text-neutral-400 sm:text-base">
+        <p className="mx-auto mt-2 max-w-2xl text-xs text-neutral-400 sm:mt-3 sm:text-base">
           Live applications, WebRTC platforms, and full-stack interactive software I have built.
         </p>
       </div>
 
       {/* FEATURED SHOWCASES */}
-      <div className="flex flex-col gap-20">
+      <div className="flex flex-col gap-10 sm:gap-16 lg:gap-20">
         {featuredProjects.map((project, index) => {
           const isEven = index % 2 === 0;
 
@@ -150,7 +150,7 @@ export default function Project() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`flex flex-col items-center gap-8 lg:gap-14 ${
+              className={`flex flex-col items-center gap-6 sm:gap-8 lg:gap-12 ${
                 isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
               }`}
             >
@@ -234,7 +234,7 @@ export default function Project() {
       </div>
 
       {/* SECONDARY PROJECTS SECTION */}
-      <div className="mt-20">
+      <div className="mt-14 sm:mt-20">
         {!showAllSecondary ? (
           <div className="flex flex-col items-center justify-center text-center">
             <button
@@ -255,11 +255,11 @@ export default function Project() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
           >
-            <h3 className="mb-8 text-center text-xl font-extrabold text-white sm:text-2xl">
+            <h3 className="mb-6 text-center text-xl font-extrabold text-white sm:mb-8 sm:text-2xl">
               More Projects & Labs
             </h3>
 
-            <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
               {secondaryProjects.map((project) => (
                 <motion.div
                   key={project.id}

@@ -138,7 +138,7 @@ const roles: Role[] = [
     description: 'Building pixel-perfect, interactive web apps that look great on any device.',
     stack: 'React, Next.js, Tailwind, Motion',
     screen: (
-      <div className="absolute inset-y-0 left-0 w-[170%] transition-all duration-500 md:w-full">
+      <div className="absolute inset-0 flex w-full items-center justify-center transition-all duration-500">
         <FrontendIllustration />
       </div>
     ),
@@ -205,7 +205,7 @@ export default function ModernSkills() {
   }, []);
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-black px-4 py-8 text-white sm:px-8">
+    <div className="relative overflow-hidden text-white">
       {/* Floating Particles */}
       {Array.from({ length: 20 }).map((_, i) => (
         <FloatingParticle
@@ -221,7 +221,7 @@ export default function ModernSkills() {
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* Header */}
         <AnimatedDiv
-          className="mb-12 flex flex-col items-center text-center"
+          className="mb-8 flex flex-col items-center text-center sm:mb-12"
           delay={0}
           direction="up"
         >
@@ -235,27 +235,27 @@ export default function ModernSkills() {
               Architecture & Stack
             </span>
           </div>
-          <h2 className="text-3xl font-extrabold text-white sm:text-4xl md:text-5xl">
+          <h2 className="text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
             Technical Skills
           </h2>
-          <p className="mt-3 text-sm text-neutral-400">
+          <p className="mt-2 text-xs text-neutral-400 sm:text-sm">
             Click on any architecture illustration to view it in full screen
           </p>
         </AnimatedDiv>
 
         {/* Skill Cards Grid */}
-        <div className="grid w-full gap-8 overflow-hidden md:grid-cols-2">
+        <div className="grid w-full gap-5 overflow-hidden sm:gap-8 md:grid-cols-2">
           {roles.map((role: Role, index) => (
             <AnimatedDiv
               key={role.id}
-              className="group relative container flex flex-col gap-4 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4"
+              className="group relative container flex flex-col gap-4 overflow-hidden rounded-3xl border border-white/10 bg-white/5 p-4 sm:p-6"
               delay={index * 50}
             >
               <div className="flex flex-col gap-2 overflow-hidden">
                 {/* Architecture Canvas (Click to Pop Out Architecture) */}
                 <div
                   onClick={() => setSelectedRole(role)}
-                  className="group/canvas relative h-[60%] min-h-72 w-full min-w-60 cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 md:h-full"
+                  className="group/canvas relative h-56 w-full cursor-pointer overflow-hidden rounded-2xl transition-all duration-300 sm:h-64 md:h-72"
                   title={`Click to expand ${role.title} Architecture`}
                 >
                   {/* Expand Hint Overlay (Monochrome) */}

@@ -15,16 +15,16 @@ export default function Hero() {
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
-      className="grid grid-cols-12 items-stretch gap-5 sm:gap-6"
+      className="grid grid-cols-12 items-stretch gap-4 sm:gap-6"
     >
       {/* Main Content Card */}
-      <Card className="col-span-12 flex flex-col justify-between border border-white/10 bg-gradient-to-br from-neutral-900/80 via-neutral-950/90 to-black p-5 sm:p-8 md:col-span-8">
+      <Card className="col-span-12 flex flex-col justify-between border border-white/10 bg-gradient-to-br from-neutral-900/80 via-neutral-950/90 to-black p-5 sm:p-7 md:col-span-8 lg:p-9">
         <div>
           {/* Top Header Row */}
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             {/* Profile Avatar & Title */}
             <div className="flex items-center gap-3">
-              <div className="relative h-12 w-12 overflow-hidden rounded-full border border-orange-500/30 p-0.5 shadow-md shadow-orange-500/10">
+              <div className="relative h-10 w-10 shrink-0 overflow-hidden rounded-full border border-orange-500/30 p-0.5 shadow-md shadow-orange-500/10 sm:h-12 sm:w-12">
                 <Image
                   src={Show_Yo}
                   alt="Prem Raj Avatar"
@@ -46,24 +46,24 @@ export default function Hero() {
             </div>
 
             {/* Action Buttons & Social Links */}
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2 sm:flex-nowrap">
               <a
                 href="https://github.com/PremRaj99"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="GitHub Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all duration-300 hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-400"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all duration-300 hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-400 sm:h-10 sm:w-10"
               >
-                <FiGithub className="text-lg" />
+                <FiGithub className="text-base sm:text-lg" />
               </a>
               <a
                 href="https://www.linkedin.com/in/prem-raj99"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="LinkedIn Profile"
-                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all duration-300 hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-400"
+                className="flex h-9 w-9 items-center justify-center rounded-xl border border-white/10 bg-white/5 text-neutral-300 transition-all duration-300 hover:border-orange-500/40 hover:bg-orange-500/10 hover:text-orange-400 sm:h-10 sm:w-10"
               >
-                <FaLinkedinIn className="text-lg" />
+                <FaLinkedinIn className="text-base sm:text-lg" />
               </a>
 
               <Button
@@ -77,7 +77,7 @@ export default function Hero() {
           </div>
 
           {/* Core Sales Headline */}
-          <h1 className="mt-6 text-2xl leading-tight font-extrabold text-white sm:mt-8 sm:text-3xl lg:text-4xl">
+          <h1 className="mt-6 text-xl leading-tight font-extrabold text-white sm:mt-8 sm:text-3xl lg:text-4xl">
             I build production-ready{' '}
             <span className="text-orange-400 underline decoration-orange-500/40 underline-offset-4">
               AI SaaS
@@ -90,7 +90,7 @@ export default function Hero() {
           </h1>
 
           {/* Value Proposition Description */}
-          <p className="mt-3 max-w-2xl text-xs leading-relaxed text-neutral-300 sm:mt-4 sm:text-sm">
+          <p className="mt-3 max-w-2xl text-xs leading-relaxed text-neutral-300 sm:mt-4 sm:text-sm lg:text-base">
             Helping startups, business owners, and founders turn ideas into scalable digital
             products. Specialized in custom AI workflows, payment-integrated online stores (Stripe &
             Razorpay), subscription billing, and sub-second web applications.
@@ -98,16 +98,16 @@ export default function Hero() {
         </div>
 
         {/* Highlight Feature Badges */}
-        <div className="mt-8 flex flex-wrap items-center gap-2 border-t border-white/10 pt-5 sm:gap-3">
-          <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[11px] font-medium text-neutral-300">
+        <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-white/10 pt-4 sm:mt-8 sm:pt-5">
+          <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[10px] font-medium text-neutral-300 sm:text-[11px]">
             <FaRocket className="text-xs text-orange-400" />
             <span>AI SaaS Architecture</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[11px] font-medium text-neutral-300">
+          <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[10px] font-medium text-neutral-300 sm:text-[11px]">
             <FiCheckCircle className="text-xs text-emerald-400" />
             <span>Payment Gateways</span>
           </div>
-          <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[11px] font-medium text-neutral-300">
+          <div className="flex items-center gap-1.5 rounded-lg border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 font-mono text-[10px] font-medium text-neutral-300 sm:text-[11px]">
             <FaShieldAlt className="text-xs text-cyan-400" />
             <span>High Concurrency API</span>
           </div>

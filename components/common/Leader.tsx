@@ -217,7 +217,7 @@ export default function ModernJourneyTimeline() {
   ];
 
   return (
-    <div className="relative overflow-hidden bg-black px-4 py-16 text-white sm:px-8">
+    <div className="relative overflow-hidden text-white">
       {/* Floating Particles */}
       {floatingParticles.map((particle, i) => (
         <FloatingParticle
@@ -242,14 +242,14 @@ export default function ModernJourneyTimeline() {
 
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* Header */}
-        <AnimatedDiv className="mb-12 text-center" delay={0} direction="up">
+        <AnimatedDiv className="mb-8 text-center sm:mb-12" delay={0} direction="up">
           <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
             Engineering Journey
           </span>
-          <h2 className="mt-2 text-3xl font-extrabold text-white sm:text-4xl">
+          <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
             From Fundamentals to Shipping Systems
           </h2>
-          <p className="mx-auto mt-2 max-w-xl text-sm text-neutral-400">
+          <p className="mx-auto mt-2 max-w-xl text-xs text-neutral-400 sm:text-sm">
             A continuous progression of building, learning, and architecting real-world
             applications.
           </p>
@@ -258,12 +258,12 @@ export default function ModernJourneyTimeline() {
         {/* Timeline Container */}
         <div className="relative">
           {/* Timeline Items */}
-          <div className="grid gap-6 md:grid-cols-2">
+          <div className="grid gap-4 sm:gap-6 md:grid-cols-2">
             {journeyData.map((item, index) => {
               return (
                 <div
                   key={item.id}
-                  className={`rounded-2xl border border-white/10 bg-neutral-900/50 p-6 backdrop-blur-sm transition-all duration-300 hover:border-orange-500/30 hover:bg-neutral-900/80 ${
+                  className={`rounded-2xl border border-white/10 bg-neutral-900/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-orange-500/30 hover:bg-neutral-900/80 sm:p-6 ${
                     activeChapter === index ? 'border-orange-500/40 bg-neutral-900/80' : ''
                   }`}
                   onMouseEnter={() => setActiveChapter(index)}
