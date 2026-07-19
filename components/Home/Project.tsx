@@ -19,14 +19,25 @@ type ProjectItem = {
 
 const projects: ProjectItem[] = [
   {
-    id: 'statai',
-    title: 'AI Music & Mood Classification SaaS',
+    id: 'physiobuddies',
+    title: 'PhysioBuddies B2B Healthcare SaaS',
     description:
-      'Production AI SaaS engine analyzing audio frequency spectrums with machine learning models for automated mood categorization, user dashboards, and API access.',
-    image:
-      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80',
-    github: 'https://github.com/PremRaj99/AI-Music-Mood-Classification',
-    tags: ['AI SaaS', 'Python ML', 'Next.js', 'TypeScript', 'REST API'],
+      'Multi-tenant healthcare SaaS platform for online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
+    image: '/projects/physiobuddies.png',
+    github: 'https://github.com/PremRaj99/physiobuddies-frontend',
+    demo: 'https://physiobuddies-frontend.vercel.app',
+    tags: ['B2B SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
+    featured: true,
+  },
+  {
+    id: 'chess',
+    title: 'Real-Time Multiplayer Chess Platform',
+    description:
+      'Full-stack interactive chess platform featuring real-time WebSocket move validation, match timers, and rating systems.',
+    image: '/projects/chess.png',
+    github: 'https://github.com/PremRaj99/chess-fronend',
+    demo: 'https://chess.premraj.online',
+    tags: ['React', 'WebSocket', 'Node.js', 'Tailwind'],
     featured: true,
   },
   {
@@ -41,15 +52,15 @@ const projects: ProjectItem[] = [
     featured: true,
   },
   {
-    id: 'physiobuddies',
-    title: 'PhysioBuddies B2B Healthcare SaaS',
+    id: 'statai',
+    title: 'AI Music & Mood Classification SaaS',
     description:
-      'Multi-tenant healthcare SaaS platform for online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
-    image: '/projects/physiobuddies.png',
-    github: 'https://github.com/PremRaj99/physiobuddies-frontend',
-    demo: 'https://physiobuddies-frontend.vercel.app',
-    tags: ['B2B SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
-    featured: true,
+      'Production AI SaaS engine analyzing audio frequency spectrums with machine learning models for automated mood categorization, user dashboards, and API access.',
+    image:
+      'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80',
+    github: 'https://github.com/PremRaj99/AI-Music-Mood-Classification',
+    tags: ['AI SaaS', 'Python ML', 'Next.js', 'TypeScript', 'REST API'],
+    featured: false,
   },
   {
     id: 'videocall',
@@ -63,14 +74,14 @@ const projects: ProjectItem[] = [
     featured: false,
   },
   {
-    id: 'chess',
-    title: 'Real-Time Multiplayer Chess Platform',
+    id: 'snake',
+    title: 'Classic Arcade Canvas Game',
     description:
-      'Full-stack interactive chess platform featuring real-time WebSocket move validation, match timers, and rating systems.',
-    image: '/projects/chess.png',
-    github: 'https://github.com/PremRaj99/chess-fronend',
-    demo: 'https://chess.premraj.online',
-    tags: ['React', 'WebSocket', 'Node.js', 'Tailwind'],
+      'Retro arcade Snake game built with HTML5 canvas, supporting responsive touch controls and high-score records.',
+    image: '/projects/snake.png',
+    github: 'https://github.com/PremRaj99/snake-game',
+    demo: 'https://snake.premraj.online',
+    tags: ['React', 'Vite', 'HTML5 Canvas'],
     featured: false,
   },
   {
@@ -95,17 +106,6 @@ const projects: ProjectItem[] = [
     github: 'https://github.com/PremRaj99/Cyber-Hunter-Club-Registration',
     demo: 'https://cyber-hunter-club-registration.vercel.app',
     tags: ['React', 'Node.js', 'Vercel'],
-    featured: false,
-  },
-  {
-    id: 'snake',
-    title: 'Classic Arcade Canvas Game',
-    description:
-      'Retro arcade Snake game built with HTML5 canvas, supporting responsive touch controls and high-score records.',
-    image: '/projects/snake.png',
-    github: 'https://github.com/PremRaj99/snake-game',
-    demo: 'https://snake.premraj.online',
-    tags: ['React', 'Vite', 'HTML5 Canvas'],
     featured: false,
   },
 ];
