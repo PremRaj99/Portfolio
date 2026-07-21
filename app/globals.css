@@ -1,4 +1,4 @@
-@import "tailwindcss";
+@import 'tailwindcss';
 
 @theme {
   --font-sans: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
@@ -6,7 +6,11 @@
 }
 
 body {
-  font-family: var(--font-geist-sans), system-ui, -apple-system, sans-serif;
+  font-family:
+    var(--font-geist-sans),
+    system-ui,
+    -apple-system,
+    sans-serif;
 }
 
 .container {
