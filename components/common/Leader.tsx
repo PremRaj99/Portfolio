@@ -57,17 +57,17 @@ const AnimatedDiv = ({
     if (!hasAnimated) {
       switch (direction) {
         case 'left':
-          return 'translateX(-100px)';
+          return 'translateX(-20px)';
         case 'right':
-          return 'translateX(100px)';
+          return 'translateX(20px)';
         case 'up':
-          return 'translateY(50px)';
+          return 'translateY(20px)';
         case 'down':
-          return 'translateY(-50px)';
+          return 'translateY(-20px)';
         case 'scale':
-          return 'scale(0.8)';
+          return 'scale(0.96)';
         default:
-          return 'translateY(50px)';
+          return 'translateY(20px)';
       }
     }
     return 'translateX(0) translateY(0) scale(1)';
@@ -80,7 +80,8 @@ const AnimatedDiv = ({
       style={{
         opacity: hasAnimated ? 1 : 0,
         transform: getTransform(),
-        transition: `all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) ${delay}ms`,
+        transition: `all 0.25s cubic-bezier(0.16, 1, 0.3, 1) ${delay}ms`,
+        willChange: 'transform, opacity',
       }}
       {...props}
     >
@@ -122,11 +123,11 @@ type SkillBadgeProps = {
 const SkillBadge = ({ skill, index, isVisible }: SkillBadgeProps) => {
   return (
     <span
-      className="cursor-pointer rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300 backdrop-blur-sm transition-all duration-300 hover:scale-105 hover:bg-white/10"
+      className="cursor-pointer rounded-full border border-white/10 bg-white/5 px-3 py-1 text-xs text-gray-300 backdrop-blur-sm transition-all duration-200 hover:scale-105 hover:bg-white/10"
       style={{
         opacity: isVisible ? 1 : 0,
-        transform: isVisible ? 'translateY(0)' : 'translateY(20px)',
-        transition: `all 0.5s ease-out ${index * 100}ms`,
+        transform: isVisible ? 'translateY(0)' : 'translateY(12px)',
+        transition: `all 0.2s ease-out ${index * 30}ms`,
       }}
     >
       {skill}
@@ -178,41 +179,35 @@ export default function ModernJourneyTimeline() {
   const journeyData = [
     {
       id: 1,
-      chapter: 'Full-Stack Foundation',
+      chapter: 'Frontend Engineering',
       subtitle:
-        'Mastered modern UI/UX design, interactive frontend engineering, and responsive layouts.',
+        'Building responsive, interactive web interfaces with React, Next.js, and Tailwind CSS.',
       year: 'Phase 1',
       skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
     },
     {
       id: 2,
-      chapter: 'Backend Architecture & Payments',
-      subtitle: 'Engineered secure REST APIs, authentication, and multi-gateway payment flows.',
+      chapter: 'Backend & Payment Systems',
+      subtitle: 'Building REST & WebSocket APIs, authentication, and payment gateway integrations.',
       year: 'Phase 2',
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Stripe API'],
-      integrations: ['Razorpay', 'PhonePe', 'Cashfree', 'UPI Tranzact', 'Google Cloud AI'],
+      skills: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Stripe'],
+      integrations: ['Razorpay', 'PhonePe', 'Cashfree', 'UPI'],
     },
     {
       id: 3,
-      chapter: 'Custom AI SaaS & Automation',
-      subtitle: 'Architected machine learning classification models and subscription SaaS tools.',
+      chapter: 'AI SaaS & Real-Time Systems',
+      subtitle: 'Integrating machine learning models, WebRTC video, and scalable backend services.',
       year: 'Phase 3',
-      skills: ['Python ML', 'AI API Integration', 'AWS EC2', 'S3', 'Docker', 'Vercel'],
-      projects: ['AI Mood & Music Classification Engine', 'PhysioBuddies Multi-tenant B2B SaaS'],
+      skills: ['Python', 'AI APIs', 'AWS', 'Docker', 'Vercel'],
+      projects: ['AI Music & Mood Classification', 'PhysioBuddies Healthcare SaaS'],
     },
     {
       id: 4,
-      chapter: 'E-Commerce & Commercial Solutions',
-      subtitle: (
-        <span className="font-semibold text-emerald-400">
-          Available for custom AI SaaS & E-Commerce development projects.
-        </span>
-      ),
-      year: 'Current Focus',
-      projects: [
-        'YogaLife Kolkata E-Commerce & Booking Platform',
-        'Busan Gaming Storefront: High-converting Digital Top-Up Hub',
-      ],
+      chapter: 'Production Systems & Web Apps',
+      subtitle:
+        'Building custom client web applications, e-commerce storefronts, and booking portals.',
+      year: 'Current',
+      projects: ['YogaLife Kolkata Storefront & Booking', 'Real-Time WebRTC Video Conferencing'],
     },
   ];
 
@@ -243,15 +238,22 @@ export default function ModernJourneyTimeline() {
       <div className="relative z-10 mx-auto max-w-5xl">
         {/* Header */}
         <AnimatedDiv className="mb-8 text-center sm:mb-12" delay={0} direction="up">
-          <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
-            Engineering Journey
-          </span>
-          <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
-            Engineering Journey & Experience
+          <div className="mb-2 flex items-center justify-center gap-2">
+            <Image
+              src={Show_Feast}
+              alt="Signature Element"
+              className="h-6 w-6 rounded-full border border-white/10 object-cover"
+            />
+            <span className="text-xs font-semibold tracking-wider text-orange-400 uppercase">
+              Experience & Milestones
+            </span>
+          </div>
+          <h2 className="mt-2 text-2xl font-extrabold text-white sm:text-4xl">
+            Technical Focus & Background
           </h2>
           <p className="mx-auto mt-2 max-w-xl text-xs text-neutral-400 sm:text-sm">
-            Continuous technical progression: from MERN stack fundamentals to engineering AI SaaS,
-            microservices, and high-concurrency web systems.
+            My engineering progression across frontend systems, backend services, real-time tools,
+            and cloud deployments.
           </p>
         </AnimatedDiv>
 
@@ -263,7 +265,7 @@ export default function ModernJourneyTimeline() {
               return (
                 <div
                   key={item.id}
-                  className={`rounded-2xl border border-white/10 bg-neutral-900/50 p-4 backdrop-blur-sm transition-all duration-300 hover:border-orange-500/30 hover:bg-neutral-900/80 sm:p-6 ${
+                  className={`rounded-2xl border border-white/10 bg-neutral-900/50 p-4 backdrop-blur-sm transition-all duration-200 hover:border-orange-500/30 hover:bg-neutral-900/80 sm:p-6 ${
                     activeChapter === index ? 'border-orange-500/40 bg-neutral-900/80' : ''
                   }`}
                   onMouseEnter={() => setActiveChapter(index)}
@@ -272,28 +274,26 @@ export default function ModernJourneyTimeline() {
                   {/* Chapter Header */}
                   <div className="mb-4">
                     <div className="mb-2 flex items-center justify-between">
-                      <span className="rounded-full border border-orange-500/30 bg-orange-500/10 px-3 py-0.5 font-mono text-xs font-semibold text-orange-400">
+                      <span className="rounded-full border border-orange-500/30 bg-orange-500/10 px-2.5 py-0.5 text-xs font-semibold text-orange-400">
                         {item.year}
                       </span>
-                      <span className="font-mono text-xs text-neutral-500">0{index + 1}</span>
+                      <span className="text-xs text-neutral-500">0{index + 1}</span>
                     </div>
-                    <h3 className="mb-1.5 flex items-center gap-2 text-lg font-bold text-white">
+                    <h3 className="mb-1.5 flex items-center gap-2 text-base font-bold text-white sm:text-lg">
                       <Image
                         src={Show_Feast}
-                        className="h-6 w-6 rounded-full border border-white/10 object-cover"
+                        className="h-5 w-5 rounded-full border border-white/10 object-cover"
                         alt="Signature Element"
                       />
                       <span>{item.chapter}</span>
                     </h3>
-                    <p className="text-xs leading-relaxed text-neutral-400 italic">
-                      {item.subtitle}
-                    </p>
+                    <p className="text-xs leading-relaxed text-neutral-400">{item.subtitle}</p>
                   </div>
 
                   {/* Skills */}
                   {item.skills && (
                     <div className="mb-4">
-                      <h4 className="mb-2 font-mono text-[11px] tracking-wider text-neutral-400 uppercase">
+                      <h4 className="mb-2 text-[11px] font-semibold tracking-wider text-neutral-400 uppercase">
                         Technologies & Stack
                       </h4>
                       <div className="flex flex-wrap gap-1.5">
@@ -312,8 +312,8 @@ export default function ModernJourneyTimeline() {
                   {/* Projects */}
                   {item.projects && (
                     <div className="mb-4">
-                      <h4 className="mb-2 font-mono text-[11px] tracking-wider text-neutral-400 uppercase">
-                        Key Achievements
+                      <h4 className="mb-2 text-[11px] font-semibold tracking-wider text-neutral-400 uppercase">
+                        Key Work
                       </h4>
                       <ul className="space-y-1">
                         {item.projects.map((project, projIndex) => (
@@ -332,14 +332,14 @@ export default function ModernJourneyTimeline() {
                   {/* Integrations */}
                   {item.integrations && (
                     <div>
-                      <h4 className="mb-2 font-mono text-[11px] tracking-wider text-neutral-400 uppercase">
+                      <h4 className="mb-2 text-[11px] font-semibold tracking-wider text-neutral-400 uppercase">
                         Integrations
                       </h4>
                       <div className="flex flex-wrap gap-1.5">
                         {item.integrations.map((integration, intIndex) => (
                           <span
                             key={intIndex}
-                            className="rounded-md border border-neutral-800 bg-neutral-950/80 px-2 py-0.5 font-mono text-[10px] text-neutral-300"
+                            className="rounded-md border border-neutral-800 bg-neutral-950/80 px-2 py-0.5 text-[11px] font-medium text-neutral-300"
                           >
                             {integration}
                           </span>

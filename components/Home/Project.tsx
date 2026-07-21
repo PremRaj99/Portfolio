@@ -20,20 +20,20 @@ type ProjectItem = {
 const projects: ProjectItem[] = [
   {
     id: 'physiobuddies',
-    title: 'PhysioBuddies B2C Healthcare SaaS',
+    title: 'PhysioBuddies — Healthcare SaaS Platform',
     description:
-      'Multi-tenant healthcare B2C SaaS platform built with the MERN stack (MongoDB, Express, React, Node.js) & TypeScript. Features online physiotherapy appointment bookings, patient recovery tracking, subscription plans, and practitioner analytics.',
+      'A multi-tenant healthcare management platform for physiotherapy clinics to handle online appointment bookings, patient recovery tracking, practitioner schedules, and subscription plans.',
     image: '/projects/physiobuddies.png',
     github: 'https://github.com/PremRaj99/physiobuddies-frontend',
     demo: 'https://physiobuddies-frontend.vercel.app',
-    tags: ['MERN Stack', 'TypeScript', 'B2C SaaS', 'React', 'Node.js', 'Express', 'MongoDB'],
+    tags: ['React', 'Node.js', 'TypeScript', 'MongoDB', 'Express'],
     featured: true,
   },
   {
     id: 'chess',
     title: 'Real-Time Multiplayer Chess Platform',
     description:
-      'Full-stack interactive chess application featuring real-time WebSocket move validation, match timers, microservices architecture, and rating systems built with React, Node.js, and TypeScript.',
+      'Full-stack interactive chess platform featuring real-time WebSocket move validation, match timers, player rating systems, and move history tracking.',
     image: '/projects/chess.png',
     github: 'https://github.com/PremRaj99/chess-fronend',
     demo: 'https://chess.premraj.online',
@@ -42,42 +42,42 @@ const projects: ProjectItem[] = [
   },
   {
     id: 'yogalife',
-    title: 'YogaLife Kolkata E-Commerce & Booking',
+    title: 'YogaLife Kolkata — Booking & Storefront',
     description:
-      'High-converting studio storefront and booking portal engineered with Next.js, React, and Tailwind CSS. Integrated with automated class schedules, customer accounts, and secure online payment gateways.',
+      'Studio storefront and class booking portal built with Next.js and Tailwind CSS, integrated with automated class schedules, customer accounts, and online payment gateways.',
     image: '/projects/yogalife.png',
     github: 'https://github.com/PremRaj99/Yogalife-Kolkata',
     demo: 'https://www.yogalifekolkata.com/',
-    tags: ['Next.js', 'React', 'E-Commerce', 'Payment Gateway', 'Tailwind CSS'],
+    tags: ['Next.js', 'React', 'Tailwind CSS', 'Payment Gateway'],
     featured: true,
   },
   {
     id: 'statai',
     title: 'AI Music & Mood Classification SaaS',
     description:
-      'Production AI SaaS engine built with Python machine learning models and a Next.js/TypeScript frontend. Analyzes audio frequency spectrums for automated mood categorization, user analytics dashboards, and REST API access.',
+      'Audio processing engine that analyzes frequency spectrums for automated mood categorization, featuring interactive analytics dashboards and REST API access.',
     image:
       'https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?w=800&auto=format&fit=crop&q=80',
     github: 'https://github.com/PremRaj99/AI-Music-Mood-Classification',
-    tags: ['AI SaaS', 'Python ML', 'Next.js', 'TypeScript', 'REST API'],
+    tags: ['Python', 'Machine Learning', 'Next.js', 'TypeScript', 'REST API'],
     featured: false,
   },
   {
     id: 'videocall',
-    title: 'WebRTC Video & Real-Time Chat Platform',
+    title: 'WebRTC Video Call & Real-Time Chat',
     description:
-      'High-concurrency video conferencing and real-time chat engine powered by WebRTC, Socket.io, Node.js, and React microservices.',
+      'Peer-to-peer video conferencing and real-time messaging application built with WebRTC, Socket.io signaling, and React.',
     image: '/projects/videocall.png',
     github: 'https://github.com/PremRaj99/Web-RTC-Video-Call',
     demo: 'https://video.premraj.online',
-    tags: ['WebRTC', 'Socket.io', 'Node.js', 'React', 'Microservices'],
+    tags: ['WebRTC', 'Socket.io', 'Node.js', 'React', 'Express'],
     featured: false,
   },
   {
     id: 'snake',
-    title: 'Classic Arcade Canvas Game',
+    title: 'Arcade Canvas Snake Game',
     description:
-      'Retro arcade Snake game built with React, Vite, and HTML5 canvas, supporting responsive touch controls and high-score persistence.',
+      'Browser arcade game built with React and HTML5 Canvas, featuring responsive touch controls and persistent high scores.',
     image: '/projects/snake.png',
     github: 'https://github.com/PremRaj99/snake-game',
     demo: 'https://snake.premraj.online',
@@ -86,26 +86,26 @@ const projects: ProjectItem[] = [
   },
   {
     id: 'emerginet',
-    title: 'EmergiNet Emergency Dispatch Platform',
+    title: 'EmergiNet — Emergency Dispatch System',
     description:
-      'Location-based emergency dispatch application connecting drivers with nearby towing and repair services in real time, built with MERN stack & REST APIs.',
+      'Location-based dispatch web application connecting motorists with nearby towing and repair services in real time.',
     image:
       'https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?w=800&auto=format&fit=crop&q=80',
     github: 'https://github.com/PremRaj99/EmergiNet-Frontend',
     demo: 'https://emergi-net-frontend.vercel.app',
-    tags: ['MERN Stack', 'React', 'Node.js', 'Express', 'MongoDB'],
+    tags: ['React', 'Node.js', 'Express', 'MongoDB', 'REST API'],
     featured: false,
   },
   {
     id: 'cyberhunter',
-    title: 'Cyber Hunter Portal & Registration System',
+    title: 'Cyber Hunter — Event & Member Portal',
     description:
-      'Member registration portal, team tracking, and event management dashboard built for club administration using React and Node.js.',
+      'Club administration portal for member registration, team tracking, and event management.',
     image:
       'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?w=800&auto=format&fit=crop&q=80',
     github: 'https://github.com/PremRaj99/Cyber-Hunter-Club-Registration',
     demo: 'https://cyber-hunter-club-registration.vercel.app',
-    tags: ['React', 'Node.js', 'Vercel', 'Tailwind CSS'],
+    tags: ['React', 'Node.js', 'Tailwind CSS', 'Vercel'],
     featured: false,
   },
 ];
@@ -124,53 +124,53 @@ export default function Project() {
           <Image
             src={Show_Feast}
             alt="Signature Element"
-            className="h-7 w-7 rounded-full border border-white/10 object-cover"
+            className="h-6 w-6 rounded-full border border-white/10 object-cover"
           />
-          <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
-            Portfolio & Case Studies
+          <span className="text-xs font-semibold tracking-wider text-orange-400 uppercase">
+            Projects
           </span>
         </div>
-        <h2 className="text-2xl font-extrabold text-white sm:text-4xl md:text-5xl">
-          Featured Projects & Work
+        <h2 className="text-2xl font-extrabold text-white sm:text-4xl">
+          Featured Work & Applications
         </h2>
-        <p className="mx-auto mt-2 max-w-2xl text-xs text-neutral-400 sm:mt-3 sm:text-base">
-          Production applications, AI SaaS platforms, WebRTC systems, and full-stack software built
-          with Next.js, React, and Microservices.
+        <p className="mx-auto mt-2 max-w-xl text-xs text-neutral-400 sm:mt-3 sm:text-sm">
+          A selection of full-stack web applications, real-time tools, and software projects I have
+          engineered.
         </p>
       </div>
 
       {/* FEATURED SHOWCASES */}
-      <div className="flex flex-col gap-10 sm:gap-16 lg:gap-20">
+      <div className="flex flex-col gap-10 sm:gap-14 lg:gap-18">
         {featuredProjects.map((project, index) => {
           const isEven = index % 2 === 0;
 
           return (
             <motion.div
               key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`flex flex-col items-center gap-6 sm:gap-8 lg:gap-12 ${
+              transition={{ duration: 0.25, delay: index * 0.05 }}
+              className={`flex flex-col items-center gap-6 sm:gap-8 lg:gap-10 ${
                 isEven ? 'lg:flex-row' : 'lg:flex-row-reverse'
               }`}
             >
               {/* Floating Website Preview Canvas */}
               <div className="group relative w-full lg:w-3/5">
-                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/60 shadow-[0_0_40px_rgba(0,0,0,0.8)] transition-all duration-500 group-hover:border-orange-500/40 group-hover:shadow-[0_0_40px_rgba(249,115,22,0.25)]">
+                <div className="relative aspect-[16/10] w-full overflow-hidden rounded-2xl border border-white/10 bg-neutral-950/60 shadow-[0_0_30px_rgba(0,0,0,0.8)] transition-all duration-300 group-hover:border-orange-500/40">
                   <Image
                     src={project.image}
                     alt={`${project.title} - Prem Raj Portfolio`}
                     fill
-                    className="object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
+                    className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-105"
                     sizes="(max-width: 1024px) 100vw, 60vw"
                   />
 
-                  {/* Browser Window Control Accent */}
-                  <div className="absolute top-4 left-4 z-10 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-3 py-1.5 backdrop-blur-md">
-                    <span className="size-2 rounded-full bg-rose-500/80" />
-                    <span className="size-2 rounded-full bg-amber-500/80" />
-                    <span className="size-2 rounded-full bg-emerald-500/80" />
+                  {/* Browser Control Accent */}
+                  <div className="absolute top-3.5 left-3.5 z-10 flex items-center gap-1.5 rounded-full border border-white/10 bg-black/60 px-2.5 py-1 backdrop-blur-md">
+                    <span className="h-2 w-2 rounded-full bg-rose-500/80" />
+                    <span className="h-2 w-2 rounded-full bg-amber-500/80" />
+                    <span className="h-2 w-2 rounded-full bg-emerald-500/80" />
                   </div>
 
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60" />
@@ -179,24 +179,22 @@ export default function Project() {
 
               {/* Content Info */}
               <div className="flex w-full flex-col items-start lg:w-2/5">
-                <span className="font-mono text-xs font-bold tracking-widest text-orange-400 uppercase">
-                  Featured Project 0{index + 1}
+                <span className="text-xs font-semibold text-orange-400 uppercase">
+                  Project 0{index + 1}
                 </span>
 
-                <h3 className="mt-2 text-2xl font-extrabold text-white sm:text-3xl">
-                  {project.title}
-                </h3>
+                <h3 className="mt-1.5 text-xl font-bold text-white sm:text-2xl">{project.title}</h3>
 
-                <p className="mt-3 text-sm leading-relaxed text-neutral-300 sm:text-base">
+                <p className="mt-2.5 text-xs leading-relaxed text-neutral-300 sm:text-sm">
                   {project.description}
                 </p>
 
                 {/* Tech Stack Badges */}
-                <div className="mt-5 flex flex-wrap gap-2">
+                <div className="mt-4 flex flex-wrap gap-1.5">
                   {project.tags.map((tag, idx) => (
                     <span
                       key={idx}
-                      className="rounded-lg border border-neutral-800 bg-neutral-900/90 px-3 py-1 font-mono text-xs font-medium text-neutral-300 shadow-xs"
+                      className="rounded-md border border-neutral-800 bg-neutral-900/90 px-2.5 py-1 text-xs font-medium text-neutral-300"
                     >
                       {tag}
                     </span>
@@ -204,15 +202,15 @@ export default function Project() {
                 </div>
 
                 {/* Direct Action Buttons */}
-                <div className="mt-7 flex flex-wrap items-center gap-3">
+                <div className="mt-6 flex flex-wrap items-center gap-3">
                   {project.demo && (
                     <a
                       href={project.demo}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2.5 text-xs font-bold text-black shadow-md transition-all hover:bg-orange-400 hover:shadow-[0_0_20px_rgba(249,115,22,0.4)]"
+                      className="flex items-center gap-2 rounded-xl bg-orange-500 px-4 py-2.5 text-xs font-semibold text-black transition-all hover:bg-orange-400"
                     >
-                      <span>Live Website</span>
+                      <span>Live Demo</span>
                       <FiExternalLink size={14} />
                     </a>
                   )}
@@ -234,38 +232,38 @@ export default function Project() {
       </div>
 
       {/* SECONDARY PROJECTS SECTION */}
-      <div className="mt-14 sm:mt-20">
+      <div className="mt-12 sm:mt-16">
         {!showAllSecondary ? (
           <div className="flex flex-col items-center justify-center text-center">
             <button
               type="button"
               onClick={() => setShowAllSecondary(true)}
-              className="group flex cursor-pointer items-center gap-3 rounded-2xl border border-orange-500/40 bg-neutral-900/90 px-8 py-4 text-sm font-bold text-orange-400 shadow-xl transition-all duration-300 hover:bg-orange-500 hover:text-black hover:shadow-[0_0_30px_rgba(249,115,22,0.4)] active:scale-95"
+              className="group flex cursor-pointer items-center gap-2 rounded-xl border border-orange-500/40 bg-neutral-900/90 px-6 py-3 text-xs font-semibold text-orange-400 transition-all hover:bg-orange-500 hover:text-black active:scale-95"
             >
-              <span>Show More</span>
+              <span>View More Projects</span>
               <FiChevronDown
-                size={20}
-                className="transition-transform duration-300 group-hover:translate-y-0.5"
+                size={18}
+                className="transition-transform duration-200 group-hover:translate-y-0.5"
               />
             </button>
           </div>
         ) : (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.4 }}
+            transition={{ duration: 0.2 }}
           >
-            <h3 className="mb-6 text-center text-xl font-extrabold text-white sm:mb-8 sm:text-2xl">
-              More Projects & Software Labs
+            <h3 className="mb-6 text-center text-lg font-bold text-white sm:mb-8 sm:text-xl">
+              More Projects & Lab Work
             </h3>
 
             <div className="grid gap-4 sm:gap-6 md:grid-cols-2 lg:grid-cols-3">
               {secondaryProjects.map((project) => (
                 <motion.div
                   key={project.id}
-                  whileHover={{ y: -4 }}
+                  whileHover={{ y: -3 }}
                   transition={{ duration: 0.2 }}
-                  className="group flex flex-col justify-between overflow-hidden rounded-xl border border-white/10 bg-neutral-950/40 transition-all duration-300 hover:border-orange-500/40 hover:bg-neutral-950/80 hover:shadow-[0_0_25px_rgba(249,115,22,0.15)]"
+                  className="group flex flex-col justify-between overflow-hidden rounded-xl border border-white/10 bg-neutral-950/40 transition-all hover:border-orange-500/40 hover:bg-neutral-950/80"
                 >
                   {/* Image Preview */}
                   <div className="relative aspect-video w-full overflow-hidden bg-black">
@@ -273,16 +271,16 @@ export default function Project() {
                       src={project.image}
                       alt={`${project.title} - Prem Raj`}
                       fill
-                      className="object-cover object-top transition-transform duration-500 group-hover:scale-105"
+                      className="object-cover object-top transition-transform duration-300 group-hover:scale-105"
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-80" />
                   </div>
 
                   {/* Content Body */}
-                  <div className="flex flex-1 flex-col justify-between p-5">
+                  <div className="flex flex-1 flex-col justify-between p-4 sm:p-5">
                     <div>
-                      <h4 className="text-base font-bold text-white transition-colors group-hover:text-orange-300">
+                      <h4 className="text-sm font-bold text-white transition-colors group-hover:text-orange-300">
                         {project.title}
                       </h4>
                       <p className="mt-2 text-xs leading-relaxed text-neutral-400">
@@ -290,13 +288,13 @@ export default function Project() {
                       </p>
                     </div>
 
-                    <div className="mt-6">
+                    <div className="mt-5">
                       {/* Tech Tags */}
-                      <div className="mb-4 flex flex-wrap gap-1.5">
+                      <div className="mb-3 flex flex-wrap gap-1.5">
                         {project.tags.map((tag, tagIdx) => (
                           <span
                             key={tagIdx}
-                            className="rounded border border-neutral-800 bg-neutral-900/90 px-2 py-0.5 font-mono text-[10px] font-medium text-neutral-400"
+                            className="rounded border border-neutral-800 bg-neutral-900/90 px-2 py-0.5 text-[11px] font-medium text-neutral-400"
                           >
                             {tag}
                           </span>
@@ -333,11 +331,11 @@ export default function Project() {
               ))}
             </div>
 
-            <div className="mt-10 flex justify-center">
+            <div className="mt-8 flex justify-center">
               <button
                 type="button"
                 onClick={() => setShowAllSecondary(false)}
-                className="flex cursor-pointer items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900 px-6 py-3 text-xs font-semibold text-neutral-300 transition-all hover:bg-neutral-800 active:scale-95"
+                className="flex cursor-pointer items-center gap-2 rounded-xl border border-neutral-700 bg-neutral-900 px-5 py-2.5 text-xs font-semibold text-neutral-300 transition-all hover:bg-neutral-800 active:scale-95"
               >
                 <span>Show Less</span>
                 <FiChevronUp size={16} />
