@@ -54,9 +54,8 @@ export default function Contact() {
           </h2>
 
           <p className="mt-3 text-xs leading-relaxed text-neutral-300 sm:text-sm">
-            Have a project in mind, an AI SaaS idea, or need a full-stack engineer for
-            microservices, payment integrations, or high-performance web apps? Send a message below
-            or email directly.
+            Whether you need a scalable microservices foundation, an AI SaaS platform built from
+            scratch, or a high-performance web product—let&apos;s talk.
           </p>
 
           {/* High-Contrast Direct Email Pill & Copy CTA */}

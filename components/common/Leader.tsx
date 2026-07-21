@@ -176,38 +176,51 @@ export default function ModernJourneyTimeline() {
     return () => window.removeEventListener('mousemove', handleMouseMove);
   }, [mounted]);
 
-  const journeyData = [
+  type JourneyItem = {
+    id: number;
+    chapter: string;
+    subtitle: string;
+    year: string;
+    skills?: string[];
+    projects?: string[];
+    integrations?: string[];
+  };
+
+  const journeyData: JourneyItem[] = [
     {
       id: 1,
-      chapter: 'Frontend Engineering',
+      chapter: 'Microservices & Backend Systems',
       subtitle:
-        'Building responsive, interactive web interfaces with React, Next.js, and Tailwind CSS.',
-      year: 'Phase 1',
-      skills: ['React', 'Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+        'Designed for high availability, low-latency IPC via Redis, and clean service isolation across distributed Node.js microservices.',
+      year: 'Core Focus',
+      skills: ['Node.js', 'Express.js', 'Redis', 'PostgreSQL', 'MongoDB', 'Docker'],
+      integrations: ['RabbitMQ', 'Prisma ORM', 'JWT Auth'],
     },
     {
       id: 2,
-      chapter: 'Backend & Payment Systems',
-      subtitle: 'Building REST & WebSocket APIs, authentication, and payment gateway integrations.',
-      year: 'Phase 2',
-      skills: ['Node.js', 'Express.js', 'MongoDB', 'PostgreSQL', 'Stripe'],
-      integrations: ['Razorpay', 'PhonePe', 'Cashfree', 'UPI'],
+      chapter: 'Full Stack & Real-Time Applications',
+      subtitle:
+        'Leveraging WebSockets and WebRTC for sub-100ms real-time state synchronization, match clocks, and live interactive media.',
+      year: 'Real-Time Apps',
+      skills: ['React', 'Next.js', 'TypeScript', 'WebSockets', 'WebRTC', 'Tailwind CSS'],
     },
     {
       id: 3,
-      chapter: 'AI SaaS & Real-Time Systems',
-      subtitle: 'Integrating machine learning models, WebRTC video, and scalable backend services.',
-      year: 'Phase 3',
-      skills: ['Python', 'AI APIs', 'AWS', 'Docker', 'Vercel'],
-      projects: ['AI Music & Mood Classification', 'PhysioBuddies Healthcare SaaS'],
+      chapter: 'AI SaaS & Event-Driven Architecture',
+      subtitle:
+        'Building asynchronous ML inference pipelines, background job queues, and multi-tenant SaaS infrastructure.',
+      year: 'AI & SaaS',
+      skills: ['Python ML', 'AI APIs', 'AWS S3 / EC2', 'Docker', 'Vercel'],
+      projects: ['AI Audio Spectrum Classifier', 'PhysioBuddies Multi-Tenant SaaS'],
     },
     {
       id: 4,
-      chapter: 'Production Systems & Web Apps',
+      chapter: 'Production Systems & Performance',
       subtitle:
-        'Building custom client web applications, e-commerce storefronts, and booking portals.',
-      year: 'Current',
-      projects: ['YogaLife Kolkata Storefront & Booking', 'Real-Time WebRTC Video Conferencing'],
+        'Engineered for high-concurrency workloads, indexed database querying (<50ms response), automated CI/CD, and sub-second ISR loads.',
+      year: 'Production Focus',
+      skills: ['Prisma ORM', 'Stripe & Razorpay', 'CI/CD Pipelines', 'ISR & SSG'],
+      projects: ['YogaLife Kolkata Booking Portal', 'High-Concurrency Multiplayer Engine'],
     },
   ];
 

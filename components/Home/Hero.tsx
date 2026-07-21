@@ -79,14 +79,15 @@ export default function Hero() {
 
           {/* Primary H1 Headline */}
           <h1 className="mt-6 text-2xl leading-tight font-bold text-white sm:mt-8 sm:text-3xl lg:text-4xl">
-            Building full-stack web applications, scalable backends, and real-time systems.
+            Architecting high-throughput web applications, structured backends, and real-time
+            systems.
           </h1>
 
           {/* Value Proposition Description */}
           <p className="mt-3 max-w-2xl text-xs leading-relaxed text-neutral-300 sm:mt-4 sm:text-sm lg:text-base">
-            Software engineer experienced in Next.js, React, Node.js, TypeScript, and database
-            architecture. I build clean web applications, REST & WebSocket APIs, and integrated
-            payment workflows for SaaS and web platforms.
+            Full-stack engineer specializing in Next.js, microservices, and event-driven
+            architecture. I bridge high-performance backend engineering with refined, product-level
+            UI/UX.
           </p>
         </div>
 
